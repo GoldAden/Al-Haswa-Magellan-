@@ -53,27 +53,25 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v6
         with:
-          fetch-depth: 100 # enough to get all commits for the current day
+          fetch-depth: 100
+          submodules: recursive
 
-      - name: Parallel submodules checkout
-        shell: bash
-        run: git submodule update --depth 1 --init --recursive --jobs=$(($(nproc) * 20))
+      # Parallel submodules checkout step removed: handled by actions/checkout with submodules: recursive
 
       - name: Set up Android SDK
         shell: bash
         run: |
-          # Install SDK Platform 36 and Build Tools
-          $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-36" "build-tools;36.0.0" 2>/dev/null || \
-          $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-36" 2>/dev/null || \
-          (echo "Trying alternative SDK manager path..." && \
-           ls $ANDROID_SDK_ROOT/cmdline-tools/ 2>/dev/null && \
-           for d in $ANDROID_SDK_ROOT/cmdline-tools/*/; do
-             if [ -f "$d/bin/sdkmanager" ]; then
-               echo "Found sdkmanager at: $d/bin/sdkmanager"
-               "$d/bin/sdkmanager" --install "platforms;android-36"
-               break
-             fi
-           done)
+          # Install SDK Platform 36 and Build Tools for compileSdk 36
+          echo "y" | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-36" "build-tools;36.0.0" || \
+          { echo "Trying alternative sdkmanager..." && \
+            for d in $ANDROID_SDK_ROOT/cmdline-tools/*/; do
+              if [ -f "$d/bin/sdkmanager" ]; then
+                echo "Found sdkmanager at: $d/bin/sdkmanager"
+                echo "y" | "$d/bin/sdkmanager" --install "platforms;android-36" "build-tools;36.0.0"
+                break
+              fi
+            done
+          }
 
       - name: Set up NDK
         shell: bash
