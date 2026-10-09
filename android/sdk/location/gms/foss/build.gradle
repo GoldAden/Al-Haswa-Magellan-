@@ -30,6 +30,6 @@ dependencies {
 
 Publish(project, [
     'artifactId' : 'location-foss',
-    'name'       : 'Organic Maps SDK. Google Fused Location (FOSS)',
-    'description': 'A library that provides a FOSS implementation of Google fused location services for the Organic Maps SDK'
+    'name'       : 'Al-Haswa Magellan SDK. Google Fused Location (FOSS)',
+    'description': 'A library that provides a FOSS implementation of Google fused location services for the Al-Haswa Magellan SDK'
 ])

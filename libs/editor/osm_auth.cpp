@@ -126,8 +126,8 @@ OsmOAuth OsmOAuth::ProductionServerAuth()
   constexpr char const * kOsmMainSiteURL = "https://www.openstreetmap.org";
   constexpr char const * kOsmApiURL = "https://api.openstreetmap.org";
 
-#if defined(OSM_OAUTH2_CLIENT_ID) && defined(OSM_OAUTH2_CLIENT_SECRET) && \
-    defined(OSM_OAUTH2_SCOPE) && defined(OSM_OAUTH2_REDIRECT_URI)
+#if defined(OSM_OAUTH2_CLIENT_ID) && defined(OSM_OAUTH2_CLIENT_SECRET) && defined(OSM_OAUTH2_SCOPE) && \
+    defined(OSM_OAUTH2_REDIRECT_URI)
   return {OSM_OAUTH2_CLIENT_ID,    OSM_OAUTH2_CLIENT_SECRET, OSM_OAUTH2_SCOPE,
           OSM_OAUTH2_REDIRECT_URI, kOsmMainSiteURL,          kOsmApiURL};
 #else

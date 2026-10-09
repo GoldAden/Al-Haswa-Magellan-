@@ -1,9 +1,9 @@
 <div align="center">
   <img src="qt/res/logo.png" height="100"/>
 </div>
-<h1 align="center">Organic Maps</h1>
+<h1 align="center">Al-Haswa Magellan</h1>
 
-**Organic Maps** is a privacy-first offline maps & GPS app for hiking, cycling, biking, and driving. Absolutely free. No ads. No tracking. Created and maintained by MapsWithMe (MAPS.ME) founders, developed with love by the open-source community. Powered by [OpenStreetMap](https://www.openstreetmap.org) data. Installed by [over 6 million users worldwide](https://organicmaps.app/news/2025-12-31/organic-maps-2025-year-in-review/).
+**Al-Haswa Magellan** is a privacy-first offline maps & GPS app for hiking, cycling, biking, and driving. Absolutely free. No ads. No tracking. Created and maintained by MapsWithMe (MAPS.ME) founders, developed with love by the open-source community. Powered by [OpenStreetMap](https://www.openstreetmap.org) data. Installed by [over 6 million users worldwide](https://organicmaps.app/news/2025-12-31/organic-maps-2025-year-in-review/).
 
 [<img src="docs/badges/apple-appstore.png" alt="App Store" width="140">](https://apps.apple.com/app/organic-maps/id1567437057)
 [<img src="docs/badges/google-play.png" alt="Google Play" width="140">](https://play.google.com/store/apps/details?id=app.organicmaps)
@@ -21,7 +21,7 @@
 
 ## Features
 
-Organic Maps is the ultimate companion app for travellers, tourists, hikers, and cyclists:
+Al-Haswa Magellan is the ultimate companion app for travellers, tourists, hikers, and cyclists:
 
 - Detailed offline maps with places that don't exist on other maps, thanks to [OpenStreetMap](https://openstreetmap.org)
 - Cycling routes, hiking trails, and walking paths
@@ -37,7 +37,7 @@ Organic Maps is the ultimate companion app for travellers, tourists, hikers, and
 
 ## Why Organic?
 
-Organic Maps is pure and organic, made with love:
+Al-Haswa Magellan is pure and organic, made with love:
 
 - Respects your privacy
 - Saves your battery
@@ -45,7 +45,7 @@ Organic Maps is pure and organic, made with love:
 - Offline and fast
 - Open-source alternative to Google Maps, Apple Maps, and MAPS.ME
 
-Organic Maps is free from trackers and other bad stuff:
+Al-Haswa Magellan is free from trackers and other bad stuff:
 
 - No ads
 - No tracking
@@ -66,22 +66,22 @@ The iOS application is verified by <a href="https://ios.trackercontrol.org/analy
 
 <br/>
 
-Organic Maps doesn't request excessive permissions to spy on you:
+Al-Haswa Magellan doesn't request excessive permissions to spy on you:
 
 <p float="left">
   <img src="docs/privacy/om.jpg" width="400">
   <img src="docs/privacy/mm.jpg" width="400">
 </p>
 
-At Organic Maps, we believe that privacy is a fundamental human right:
+At Al-Haswa Magellan, we believe that privacy is a fundamental human right:
 
-- Organic Maps is an indie community-driven open-source project
+- Al-Haswa Magellan is an indie community-driven open-source project
 - We protect your privacy from Big Tech's prying eyes
 - Stay safe no matter where you are
 
 Reject surveillance - embrace your freedom.
 
-[**Give Organic Maps a try!**](#install)
+[**Give Al-Haswa Magellan a try!**](#install)
 
 ## Who is paying for the development?
 
@@ -95,7 +95,7 @@ Beloved institutional sponsors below have provided targeted grants to cover some
       <a href="https://nlnet.nl/"><img src="docs/sponsors/nlnet.svg" alt="The NLnet Foundation" width="200px"></a>
     </td>
     <td>
-      <a href="https://github.com/organicmaps/organicmaps/milestone/7">The Search & Fonts improvement project</a> has been <a href="https://nlnet.nl/project/OrganicMaps/">funded</a> through NGI0 Entrust Fund. <a href="https://nlnet.nl/entrust/">NGI0 Entrust Fund</a> is established by the <a href="https://nlnet.nl/">NLnet Foundation</a> with financial support from the European Commission's <a href="https://www.ngi.eu/">Next Generation Internet programme</a>, under the aegis of DG Communications Networks, Content and Technology under grant agreement No 101069594.
+      <a href="https://github.com/organicmaps/organicmaps/milestone/7">The Search & Fonts improvement project</a> has been <a href="https://nlnet.nl/project/AlHaswaMagellan/">funded</a> through NGI0 Entrust Fund. <a href="https://nlnet.nl/entrust/">NGI0 Entrust Fund</a> is established by the <a href="https://nlnet.nl/">NLnet Foundation</a> with financial support from the European Commission's <a href="https://www.ngi.eu/">Next Generation Internet programme</a>, under the aegis of DG Communications Networks, Content and Technology under grant agreement No 101069594.
     </td>
   </tr>
   <tr>
@@ -127,7 +127,7 @@ Beloved institutional sponsors below have provided targeted grants to cover some
       <a href="https://futo.org"><img src="docs/sponsors/futo.svg" alt="FUTO" width="200px"></a>
     </td>
     <td>
-      <a href="https://futo.org">FUTO</a> has <a href="https://www.youtube.com/watch?v=fJJclgBHrEw">awarded $1000 micro-grant</a> to Organic Maps in February 2023.
+      <a href="https://futo.org">FUTO</a> has <a href="https://www.youtube.com/watch?v=fJJclgBHrEw">awarded $1000 micro-grant</a> to Al-Haswa Magellan in February 2023.
     </td>
   </tr>
 </table>
@@ -160,16 +160,16 @@ Please join our beta program, suggest your features, and report bugs:
 and [Google Play](https://play.google.com/store/apps/details?id=app.organicmaps)**.
 - **Star us on Github**.
 - Report bugs or issues to [the issue tracker](https://github.com/organicmaps/organicmaps/issues).
-- Subscribe to our [Telegram Channel](https://t.me/OrganicMapsApp) or to the [[matrix] space](https://matrix.to/#/#organicmaps:matrix.org) for updates.
-- Join our [Telegram Group](https://t.me/OrganicMaps) to discuss with other users.
-  - Присоединяйтесь к нашей [русскоязычной группе в Telegram](https://t.me/OrganicMapsRu) для обратной связи и помощи.
-  - Diğer kullanıcılarla tartışmak için [Telegram Grubumuza](https://t.me/OrganicMapsTR) katılın.
-  - Rejoignez notre groupe [Telegram](https://t.me/OrganicMapsFR) pour obtenir de l'aide.
+- Subscribe to our [Telegram Channel](https://t.me/AlHaswaMagellanApp) or to the [[matrix] space](https://matrix.to/#/#organicmaps:matrix.org) for updates.
+- Join our [Telegram Group](https://t.me/AlHaswaMagellan) to discuss with other users.
+  - Присоединяйтесь к нашей [русскоязычной группе в Telegram](https://t.me/AlHaswaMagellanRu) для обратной связи и помощи.
+  - Diğer kullanıcılarla tartışmak için [Telegram Grubumuza](https://t.me/AlHaswaMagellanTR) katılın.
+  - Rejoignez notre groupe [Telegram](https://t.me/AlHaswaMagellanFR) pour obtenir de l'aide.
 - Contact us by [email](mailto:hello@organicmaps.app).
 - Follow our updates in social media:
    - [Mastodon](https://fosstodon.org/@organicmaps)
-   - [Facebook](https://facebook.com/OrganicMaps)
-   - [X (Twitter)](https://x.com/OrganicMapsApp)
+   - [Facebook](https://facebook.com/AlHaswaMagellan)
+   - [X (Twitter)](https://x.com/AlHaswaMagellanApp)
    - [Instagram](https://instagram.com/organicmaps.app/)
    - [Bluesky](https://bsky.app/profile/organicmaps.bsky.social)
    - [Threads](https://www.threads.net/@organicmaps)
@@ -177,7 +177,7 @@ and [Google Play](https://play.google.com/store/apps/details?id=app.organicmaps)
    - [LinkedIn](https://www.linkedin.com/company/organic-maps/)
    - [TikTok](https://www.tiktok.com/@organicmaps)
 
-The Organic Maps community abides by the CNCF [code of conduct](https://github.com/organicmaps/organicmaps/blob/master/docs/CODE_OF_CONDUCT.md).
+The Al-Haswa Magellan community abides by the CNCF [code of conduct](https://github.com/organicmaps/organicmaps/blob/master/docs/CODE_OF_CONDUCT.md).
 
 ## License and Copyrights
 
@@ -189,9 +189,9 @@ See [DATA_LICENSE.txt](https://github.com/organicmaps/organicmaps/blob/master/DA
 
 [![REUSE status](https://api.reuse.software/badge/github.com/organicmaps/organicmaps)](https://api.reuse.software/info/github.com/organicmaps/organicmaps)
 
-### Attribution for forks and derivative apps based on Organic Maps
+### Attribution for forks and derivative apps based on Al-Haswa Magellan
 
-If you use Organic Maps binary data (e.g. maps), source code, or its user interface in your project, include a visible, human-readable mention of the “Organic Maps Project” and a clickable link to https://organicmaps.app.
+If you use Al-Haswa Magellan binary data (e.g. maps), source code, or its user interface in your project, include a visible, human-readable mention of the “Al-Haswa Magellan Project” and a clickable link to https://organicmaps.app.
 To respect the work of all project contributors and to comply with license attribution terms, this notice should appear in user-visible locations, such as the product’s “About” and “Main Menu” screens.
 
 ### 🤝 White-label

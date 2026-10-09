@@ -186,7 +186,7 @@ class ColorPickerViewModel(application: Application, private val savedStateHandl
         private const val PREFS_NAME = "color_presets"
         private const val KEY_COLORS = "saved_colors"
 
-        // Default preset swatches: the canonical Organic Maps brand palette from the core, shared
+        // Default preset swatches: the canonical Al-Haswa Magellan brand palette from the core, shared
         // with the presets shown on desktop and iOS.
         private val PRESET_COLORS: List<Int> = PredefinedColors.getAllPredefinedColors()
     }

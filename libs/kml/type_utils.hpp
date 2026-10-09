@@ -59,7 +59,7 @@ MarkId constexpr kInvalidMarkId = std::numeric_limits<MarkId>::max();
 MarkId constexpr kDebugMarkId = kInvalidMarkId - 1;
 TrackId constexpr kInvalidTrackId = std::numeric_limits<TrackId>::max();
 TrackId constexpr kTempRelationTrackId = kInvalidTrackId - 1;
-// The only values Organic Maps ever writes into the vestigial "Collections" slots,
+// The only values Al-Haswa Magellan ever writes into the vestigial "Collections" slots,
 // see CategoryData::m_unusedCompilationId.
 uint64_t constexpr kUnusedCompilationId = std::numeric_limits<uint64_t>::max();
 uint8_t constexpr kUnusedCompilationType = 0;

@@ -82,7 +82,7 @@ std::string MigrateDesktopDirectory(std::string const & root, bool isDesktopApp)
 {
   namespace fs = std::filesystem;
   fs::path const oldPath = fs::path(root) / "OMaps";
-  fs::path const newPath = fs::path(root) / "OrganicMaps";
+  fs::path const newPath = fs::path(root) / "AlHaswaMagellan";
   std::error_code ec;
   if (!isDesktopApp)
   {
@@ -151,7 +151,7 @@ Platform::Platform()
         "../data",                                                 // 'build' folder inside the repo
         JoinPath(*execDir, "..", "organicmaps", "data"),           // build-omim-{debug,release}
         JoinPath(*execDir, "..", "share"),                         // installed version with packages
-        JoinPath(*execDir, "..", "OrganicMaps"),                   // installed version without packages
+        JoinPath(*execDir, "..", "AlHaswaMagellan"),               // installed version without packages
         JoinPath(*execDir, "..", "OMaps"),                         // older installed version
         JoinPath(*execDir, "..", "share", "organicmaps", "data"),  // flatpak-build
     };

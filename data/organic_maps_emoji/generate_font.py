@@ -8,9 +8,9 @@ SVG_DIR = "."
 OUTPUT = "../fonts/organic_maps_emoji.ttf"
 
 font = fontforge.font()
-font.fontname = "OrganicMapsEmoji"
-font.familyname = "OrganicMapsEmoji"
-font.fullname = "OrganicMapsEmoji"
+font.fontname = "AlHaswaMagellanEmoji"
+font.familyname = "AlHaswaMagellanEmoji"
+font.fullname = "AlHaswaMagellanEmoji"
 font.em = 1024
 
 for svg_file in glob.glob(os.path.join(SVG_DIR, "*.svg")):

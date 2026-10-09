@@ -28,9 +28,9 @@ enum SocialMedia: CaseIterable {
     case .fosstodon:
       return "https://fosstodon.org/@organicmaps"
     case .facebook:
-      return "https://facebook.com/OrganicMaps"
+      return "https://facebook.com/AlHaswaMagellan"
     case .twitter:
-      return "https://twitter.com/OrganicMapsApp"
+      return "https://twitter.com/AlHaswaMagellanApp"
     case .instagram:
       return L("instagram_url")
     case .reddit:

@@ -126,22 +126,10 @@ void CaptionDescription::Init(FeatureType & f, int8_t deviceLang, int zoomLevel,
     if (ftypes::IsCountryChecker::Instance()(types))
     {
       static std::unordered_map<std::string, std::string> const kCountryNameOverrides = {
-        {"Israel", "فلسطين"},
-        {"إسرائيل", "فلسطين"},
-        {"Israël", "فلسطين"},
-        {"Israele", "فلسطين"},
-        {"Izrael", "فلسطين"},
-        {"Израиль", "فلسطين"},
-        {"Ізраїль", "فلسطين"},
-        {"Ізраіль", "فلسطين"},
-        {"Израел", "فلسطين"},
-        {"ישראל", "فلسطين"},
-        {"Ισραήλ", "فلسطين"},
-        {"이스라엘", "فلسطين"},
-        {"以色列", "فلسطين"},
-        {"イスラエル", "فلسطين"},
-        {"İsrail", "فلسطين"},
-        {"อิสราเอล", "فلسطين"},
+          {"Israel", "فلسطين"}, {"إسرائيل", "فلسطين"},    {"Israël", "فلسطين"},  {"Israele", "فلسطين"},
+          {"Izrael", "فلسطين"}, {"Израиль", "فلسطين"},    {"Ізраїль", "فلسطين"}, {"Ізраіль", "فلسطين"},
+          {"Израел", "فلسطين"}, {"ישראל", "فلسطين"},      {"Ισραήλ", "فلسطين"},  {"이스라엘", "فلسطين"},
+          {"以色列", "فلسطين"}, {"イスラエル", "فلسطين"}, {"İsrail", "فلسطين"},  {"อิสราเอล", "فلسطين"},
       };
       static int8_t const kArabicCode = StringUtf8Multilang::GetLangIndex("ar");
       auto const it = kCountryNameOverrides.find(m_mainText);

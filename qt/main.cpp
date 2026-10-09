@@ -116,7 +116,7 @@ int main(int argc, char * argv[])
 #endif
   Platform & platform = GetPlatform();
 
-  LOG(LINFO, ("Organic Maps", platform.Version(), "built with QT:", QT_VERSION_STR, "runtime QT:", qVersion(),
+  LOG(LINFO, ("Al-Haswa Magellan", platform.Version(), "built with QT:", QT_VERSION_STR, "runtime QT:", qVersion(),
               "detected CPU cores:", platform.CpuCores()));
 
   gflags::SetUsageMessage("Desktop application.");
@@ -145,9 +145,9 @@ int main(int argc, char * argv[])
   app.setDesktopFileName("app.organicmaps.desktop");
 
 #ifdef BUILD_DESIGNER
-  QApplication::setApplicationName("Organic Maps Designer");
+  QApplication::setApplicationName("Al-Haswa Magellan Designer");
 #else
-  QApplication::setApplicationName("Organic Maps");
+  QApplication::setApplicationName("Al-Haswa Magellan");
 #endif
 
 #ifdef DEBUG
@@ -283,6 +283,6 @@ int main(int argc, char * argv[])
   }
 #endif  // BUILD_DESIGNER
 
-  LOG_SHORT(LINFO, ("Organic Maps finished with code", returnCode));
+  LOG_SHORT(LINFO, ("Al-Haswa Magellan finished with code", returnCode));
   return returnCode;
 }

@@ -55,9 +55,9 @@ std::string MigrateAppSupportDirectory(std::string const & supportDir, char cons
 
 Platform::Platform()
 {
-  // OrganicMaps.app/Contents/Resources or omim-build-debug for tests.
+  // AlHaswaMagellan.app/Contents/Resources or omim-build-debug for tests.
   std::string const resourcesPath = NSBundle.mainBundle.resourcePath.UTF8String;
-  // OrganicMaps.app or omim-build-debug for tests.
+  // AlHaswaMagellan.app or omim-build-debug for tests.
   std::string const bundlePath = NSBundle.mainBundle.bundlePath.UTF8String;
   // Current working directory, can be overrided for Xcode projects in the scheme's settings.
   std::string const currentDir = [NSFileManager.defaultManager currentDirectoryPath].UTF8String;
@@ -136,9 +136,9 @@ Platform::Platform()
       NSArray * dirPaths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
       std::string const supportDir = [[dirPaths objectAtIndex:0] UTF8String];
 #ifdef BUILD_DESIGNER
-      m_writableDir = MigrateAppSupportDirectory(supportDir, "OMapsData.Designer", "OrganicMaps.Designer");
+      m_writableDir = MigrateAppSupportDirectory(supportDir, "OMapsData.Designer", "AlHaswaMagellan.Designer");
 #else   // BUILD_DESIGNER
-      m_writableDir = MigrateAppSupportDirectory(supportDir, "OMapsData", "OrganicMaps");
+      m_writableDir = MigrateAppSupportDirectory(supportDir, "OMapsData", "AlHaswaMagellan");
 #endif  // BUILD_DESIGNER
       CHECK(MkDirRecursively(m_writableDir), ("Cannot create Application Support directory", m_writableDir));
     }

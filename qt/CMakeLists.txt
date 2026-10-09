@@ -78,12 +78,12 @@ target_link_libraries(${PROJECT_NAME}
 
 if (BUILD_DESIGNER)
   target_link_libraries(${PROJECT_NAME} PRIVATE generator)
-  set(BUNDLE_NAME "OrganicMaps.Designer")
-  set(BUNDLE_DISPLAY_NAME "Organic Maps Designer")
+  set(BUNDLE_NAME "AlHaswaMagellan.Designer")
+  set(BUNDLE_DISPLAY_NAME "Al-Haswa Magellan Designer")
   set(BUNDLE_ICON designer.icns)
 else()
-  set(BUNDLE_NAME "OrganicMaps")
-  set(BUNDLE_DISPLAY_NAME "Organic Maps")
+  set(BUNDLE_NAME "AlHaswaMagellan")
+  set(BUNDLE_DISPLAY_NAME "Al-Haswa Magellan")
   set(BUNDLE_ICON mac.icns)
 endif()
 

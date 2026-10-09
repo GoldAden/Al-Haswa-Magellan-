@@ -145,12 +145,12 @@ QToolBar * createActionToolBar(QWidget * parent, qt::DrawWidget * drawWidget, pl
       if (!d)
         return;
       // Desktop is not localized, so the subject is composed here instead of from the
-      // "%1 on Organic Maps" format string the mobile apps own.
-      QString subject = QStringLiteral("A place on Organic Maps");
+      // "%1 on Al-Haswa Magellan" format string the mobile apps own.
+      QString subject = QStringLiteral("A place on Al-Haswa Magellan");
       if (d->m_isMyPosition)
         subject = QString::fromStdString(drawWidget->GetFramework().GetStringsBundle().GetString("share_my_position"));
       else if (!d->m_subjectBasis.empty())
-        subject = QString::fromStdString(d->m_subjectBasis) + " on Organic Maps";
+        subject = QString::fromStdString(d->m_subjectBasis) + " on Al-Haswa Magellan";
 
       QUrlQuery query;
       query.addQueryItem("subject", subject);

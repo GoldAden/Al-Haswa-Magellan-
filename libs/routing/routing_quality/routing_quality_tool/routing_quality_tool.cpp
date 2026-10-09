@@ -30,7 +30,7 @@ DEFINE_string(save_results, "", "The directory where results of tool will be sav
 
 DEFINE_double(kml_percent, 0.0,
               "The percent of routes for which kml file will be generated. "
-              "KML files can be viewed in the Organic Maps desktop app.");
+              "KML files can be viewed in the Al-Haswa Magellan desktop app.");
 
 DEFINE_bool(benchmark_stat, false, "Dump statistics about route time building.");
 

@@ -1,10 +1,10 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://github.com/organicmaps/organicmaps/
-Upstream-Name: Organic Maps
+Upstream-Name: Al-Haswa Magellan
 
 Files: *
 Copyright: 2020, My.com B.V. (Mail.Ru Group)
-           2021-2025, Organic Maps Contributors
+           2021-2025, Al-Haswa Magellan Contributors
 License: Apache-2.0
 
 Files: 3party/bsdiff-courgette/bsdiff/*

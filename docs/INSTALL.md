@@ -9,7 +9,7 @@
 
 ## System requirements
 
-To build and run Organic Maps you'll need a machine with at least 4GB of RAM. Download and disk requirements depend
+To build and run Al-Haswa Magellan you'll need a machine with at least 4GB of RAM. Download and disk requirements depend
 on the target platform, build type, and selected clone options.
 
 For _Windows_ you need to have [Git for Windows](https://git-scm.com/download/win) installed and Git bash available in the PATH.
@@ -58,7 +58,7 @@ If you mistakenly did a `git clone` without checking out submodules, you can run
 
 ### Preparing
 
-You need a Linux or a macOS machine to build a desktop version of Organic Maps. [Windows](#windows) users can use the [WSL](https://learn.microsoft.com/en-us/windows/wsl/) (Windows Subsystem for Linux) and follow ["Linux or Mac"](#linux-or-mac) steps described below.
+You need a Linux or a macOS machine to build a desktop version of Al-Haswa Magellan. [Windows](#windows) users can use the [WSL](https://learn.microsoft.com/en-us/windows/wsl/) (Windows Subsystem for Linux) and follow ["Linux or Mac"](#linux-or-mac) steps described below.
 
 ### Linux or macOS
 
@@ -172,8 +172,8 @@ Prefer the distribution's Qt6 packages listed in the sections above. If
 Linuxbrew's Qt6 must be used, preload the system libGL at runtime:
 
 ```bash
-LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGL.so.1 ./OrganicMaps   # Debian/Ubuntu
-LD_PRELOAD=/usr/lib64/libGL.so.1 ./OrganicMaps                  # Fedora/RHEL
+LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGL.so.1 ./AlHaswaMagellan   # Debian/Ubuntu
+LD_PRELOAD=/usr/lib64/libGL.so.1 ./AlHaswaMagellan                  # Fedora/RHEL
 ```
 
 ### Windows
@@ -257,24 +257,24 @@ tools/unix/build_omim.sh -r desktop
 A preset build puts binaries in `build/<preset>` (e.g. `build/release`); the
 `build_omim.sh` wrapper uses `../omim-build-<buildtype>` instead.
 
-A desktop app binary is `OrganicMaps`. To run e.g. a release version built with the
+A desktop app binary is `AlHaswaMagellan`. To run e.g. a release version built with the
 `release` preset:
 
 _Linux:_
 
 ```bash
-build/release/OrganicMaps
+build/release/AlHaswaMagellan
 ```
 
 _macOS:_
 
 ```bash
-build/release/OrganicMaps.app/Contents/MacOS/OrganicMaps
+build/release/AlHaswaMagellan.app/Contents/MacOS/AlHaswaMagellan
 ```
 
-On Linux, close older `OMaps` instances before the first `OrganicMaps` launch.
+On Linux, close older `OMaps` instances before the first `AlHaswaMagellan` launch.
 It moves legacy directories under the XDG config and data roots to
-`OrganicMaps`. Populated destinations, symlinked legacy directories, and
+`AlHaswaMagellan`. Populated destinations, symlinked legacy directories, and
 failed moves leave the old data intact for manual recovery.
 
 ### Testing
@@ -336,7 +336,7 @@ Steps to generate coverage report:
 
 ### Debug commands
 
-Organic Maps has some "hidden" debug commands that you can trigger by entering them into the search box.
+Al-Haswa Magellan has some "hidden" debug commands that you can trigger by entering them into the search box.
 
 For example you can switch theme which is very useful for checking [styles](STYLES.md) changes.
 To switch themes you can enter this commands:
@@ -354,12 +354,12 @@ There are also other commands for turning on/off isolines, anti-aliasing, etc. C
 To make the desktop app display maps in a different language add a `-lang` option, e.g. for the Russian language:
 
 ```bash
-build/release/OrganicMaps -lang ru
+build/release/AlHaswaMagellan -lang ru
 ```
 
-By default `OrganicMaps` expects a repository's `data` folder to be present in the current working directory, add a `-data_path` option to override it.
+By default `AlHaswaMagellan` expects a repository's `data` folder to be present in the current working directory, add a `-data_path` option to override it.
 
-Check `OrganicMaps -help` for a list of all run-time options.
+Check `AlHaswaMagellan -help` for a list of all run-time options.
 
 When running the desktop app with lots of maps, increase the open files limit. In macOS the default value is only 256.
 Use `ulimit -n 2000`, put it into `~/.bash_profile` to apply it to all new sessions.
@@ -384,7 +384,7 @@ The `build_omim.sh` script basically runs these commands:
 
 ### Preparing
 
-Linux, macOS, or Windows should work to build Organic Maps for Android.
+Linux, macOS, or Windows should work to build Al-Haswa Magellan for Android.
 
 Ensure that you have at least 30GB of free space and Python 3 installed.
 
@@ -487,7 +487,7 @@ To run Android Auto, connect the phone using USB cable and run the Desktop Head 
 [I]: Attached!
 ```
 
-Organic Maps icon will appear in the application list in DHU.
+Al-Haswa Magellan icon will appear in the application list in DHU.
 
 ### More options
 
@@ -620,7 +620,7 @@ Example of command line for running system tracing:
 
 ### Preparing
 
-Building Organic Maps for iOS requires a Mac.
+Building Al-Haswa Magellan for iOS requires a Mac.
 
 Ensure that you have at least 20GB of free space.
 
@@ -632,7 +632,7 @@ xcode-select --install
 
 Then, install [Xcode](https://apps.apple.com/app/xcode/id497799835?mt=12) from the App Store.
 
-Enroll in the [Apple Developer Program](https://developer.apple.com/programs/) (you can run Organic Maps in Simulator without this step).
+Enroll in the [Apple Developer Program](https://developer.apple.com/programs/) (you can run Al-Haswa Magellan in Simulator without this step).
 
 ### Configuring Xcode
 
@@ -654,7 +654,7 @@ Reconfigure the project to use your developer signing keys:
 - Choose a unique bundle identifier (not app.organicmaps.debug) and your team.
 - Select "Automatically manage signing".
 
-If you want to run Organic Maps on a real device, you have to remove the CarPlay entitlement. Open `iphone/Maps/OMaps-Debug.entitlements`
+If you want to run Al-Haswa Magellan on a real device, you have to remove the CarPlay entitlement. Open `iphone/Maps/OMaps-Debug.entitlements`
 and remove the `com.apple.developer.carplay-maps` entry. Now you can sign your app again in the "Signing & Capabilities" tab. Testing CarPlay
 on a real device requires [requesting entitlements from Apple](https://developer.apple.com/documentation/carplay/requesting_carplay_entitlements).
 

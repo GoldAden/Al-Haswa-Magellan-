@@ -15,7 +15,7 @@
 - Dependency versions: `gradle/libs.versions.toml`
 
 ## JNI bridge pattern
-Java native methods in `Framework.java` / `OrganicMaps.java` map to C++ in `sdk/src/main/cpp/`:
+Java native methods in `Framework.java` / `AlHaswaMagellan.java` map to C++ in `sdk/src/main/cpp/`:
 ```java
 // Java side (sdk/src/main/java/app/organicmaps/sdk/Framework.java):
 public static native int nativeGetDrawScale();
@@ -41,7 +41,7 @@ JNIEXPORT jint Java_app_organicmaps_sdk_Framework_nativeGetDrawScale(JNIEnv * en
 - `SplashActivity` -- startup/initialization entry point
 - `MwmActivity` -- main map activity (hosts fragments for search, routing, editor, etc.)
 - `Framework.java` -- 200+ native methods bridging to C++ Framework
-- `OrganicMaps.java` -- SDK initialization and platform setup
+- `AlHaswaMagellan.java` -- SDK initialization and platform setup
 - `Map.java` -- surface rendering, touch events, widget management
 
 ## Android Auto / Automotive

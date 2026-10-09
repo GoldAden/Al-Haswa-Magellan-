@@ -22,10 +22,10 @@ namespace share
 // Localized, placeholder-free labels the body builder needs, filled from the core StringsBundle.
 struct Strings
 {
-  std::string m_myPosition;         // "I am here on Organic Maps"
-  std::string m_openInOmOrBrowser;  // "Open in Organic Maps or in a browser"
+  std::string m_myPosition;         // "I am here on Al-Haswa Magellan"
+  std::string m_openInOmOrBrowser;  // "Open in Al-Haswa Magellan or in a browser"
   std::string m_openInMapsApp;      // "Open in Another App"
-  std::string m_getApp;             // "Get Organic Maps"
+  std::string m_getApp;             // "Get Al-Haswa Magellan"
 };
 
 // A resolved place to share: name already filtered, address already reverse-geocoded if needed.
@@ -47,7 +47,7 @@ struct Result
   std::string m_text;  // plain body for messengers
   std::string m_html;  // rich body for email
   // Place name, else address, else empty. Platforms build the email subject from it (they own the
-  // localized "%1 on Organic Maps" format placeholder, which can't be shared through the bundle).
+  // localized "%1 on Al-Haswa Magellan" format placeholder, which can't be shared through the bundle).
   std::string m_subjectBasis;
   // Lets a platform pick the "current location" subject without asking its own place page again.
   bool m_isMyPosition = false;

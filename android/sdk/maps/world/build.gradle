@@ -12,6 +12,6 @@ android {
 
 Publish(project, [
     'artifactId' : 'maps-world',
-    'name'       : 'Organic Maps SDK. World Maps',
-    'description': 'A library that provides world maps for the Organic Maps SDK'
+    'name'       : 'Al-Haswa Magellan SDK. World Maps',
+    'description': 'A library that provides world maps for the Al-Haswa Magellan SDK'
 ])

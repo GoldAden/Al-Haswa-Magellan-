@@ -25,7 +25,7 @@ UNIT_TEST(MigrateDesktopDirectory_FirstLaunch)
   auto const root = TestRoot("MigrateDesktopDirectoryFirstLaunch");
   platform::tests_support::ScopedDirCleanup const cleanup(root);
   auto const oldPath = fs::path(root) / "OMaps";
-  auto const newPath = fs::path(root) / "OrganicMaps";
+  auto const newPath = fs::path(root) / "AlHaswaMagellan";
   fs::create_directories(oldPath / "bookmarks");
   std::ofstream(oldPath / "bookmarks" / "saved.kmz") << "saved";
 
@@ -40,7 +40,7 @@ UNIT_TEST(MigrateDesktopDirectory_ExistingDestination)
   auto const root = TestRoot("MigrateDesktopDirectoryExistingDestination");
   platform::tests_support::ScopedDirCleanup const cleanup(root);
   auto const oldPath = fs::path(root) / "OMaps";
-  auto const newPath = fs::path(root) / "OrganicMaps";
+  auto const newPath = fs::path(root) / "AlHaswaMagellan";
   fs::create_directories(oldPath);
   fs::create_directories(newPath);
   std::ofstream(oldPath / "old.kmz") << "old";
@@ -56,7 +56,7 @@ UNIT_TEST(MigrateDesktopDirectory_EmptyDestination)
   auto const root = TestRoot("MigrateDesktopDirectoryEmptyDestination");
   platform::tests_support::ScopedDirCleanup const cleanup(root);
   auto const oldPath = fs::path(root) / "OMaps";
-  auto const newPath = fs::path(root) / "OrganicMaps";
+  auto const newPath = fs::path(root) / "AlHaswaMagellan";
   fs::create_directories(oldPath);
   fs::create_directories(newPath);
   std::ofstream(oldPath / "old.kmz") << "old";
@@ -71,7 +71,7 @@ UNIT_TEST(MigrateDesktopDirectory_Symlinks)
   auto const root = TestRoot("MigrateDesktopDirectorySymlinks");
   platform::tests_support::ScopedDirCleanup const cleanup(root);
   auto const oldPath = fs::path(root) / "OMaps";
-  auto const newPath = fs::path(root) / "OrganicMaps";
+  auto const newPath = fs::path(root) / "AlHaswaMagellan";
   auto const oldTarget = fs::path(root) / "old-target";
   auto const newTarget = fs::path(root) / "new-target";
   fs::create_directories(oldTarget);
@@ -98,7 +98,7 @@ UNIT_TEST(MigrateDesktopDirectory_FreshInstall)
 {
   auto const root = TestRoot("MigrateDesktopDirectoryFreshInstall");
   platform::tests_support::ScopedDirCleanup const cleanup(root);
-  auto const newPath = fs::path(root) / "OrganicMaps";
+  auto const newPath = fs::path(root) / "AlHaswaMagellan";
 
   TEST_EQUAL(platform::MigrateDesktopDirectory(root, true), newPath.string(), ());
   TEST(!fs::exists(newPath), ());
@@ -109,7 +109,7 @@ UNIT_TEST(MigrateDesktopDirectory_OtherTool)
   auto const root = TestRoot("MigrateDesktopDirectoryOtherTool");
   platform::tests_support::ScopedDirCleanup const cleanup(root);
   auto const oldPath = fs::path(root) / "OMaps";
-  auto const newPath = fs::path(root) / "OrganicMaps";
+  auto const newPath = fs::path(root) / "AlHaswaMagellan";
 
   TEST_EQUAL(platform::MigrateDesktopDirectory(root, false), oldPath.string(), ());
   fs::create_directories(oldPath);

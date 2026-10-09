@@ -108,8 +108,37 @@ jobs:
         run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
       - name: Checkout sources
         uses: actions/checkout@v6
-      - name: Parallel submodules checkout
-        run: git submodule update --depth 1 --init --recursive --jobs=20
+      - name: Fetch submodules manually
+        shell: bash
+        run: |
+          echo "Fetching submodules manually (GitHub fork did not preserve submodule refs)..."
+          for d in 3party/BLAKE3 3party/CMake-MetalShaderSupport 3party/Vulkan-Headers 3party/boost_headers 3party/expat 3party/fast_float 3party/fast_obj 3party/gflags 3party/glaze 3party/glfw 3party/glm 3party/googletest 3party/minizip-ng 3party/utfcpp 3party/zlib-ng 3party/freetype/freetype 3party/harfbuzz/harfbuzz 3party/icu/icu 3party/imgui/imgui 3party/pugixml/pugixml tools/kothic tools/osmctools tools/python/twine; do
+            rm -rf "$d" 2>/dev/null || true
+          done
+          git clone --depth 1 https://github.com/BLAKE3-team/BLAKE3 3party/BLAKE3
+          git clone --depth 1 --branch main https://github.com/dpogue/CMake-MetalShaderSupport.git 3party/CMake-MetalShaderSupport
+          git clone --depth 1 --branch main https://github.com/KhronosGroup/Vulkan-Headers.git 3party/Vulkan-Headers
+          git clone --depth 1 --branch master https://github.com/organicmaps/boost_headers.git 3party/boost_headers
+          git clone --depth 1 --branch R_2_8_2 https://github.com/libexpat/libexpat.git 3party/expat
+          git clone --depth 1 --branch main https://github.com/fastfloat/fast_float.git 3party/fast_float
+          git clone --depth 1 --branch master https://github.com/thisistherk/fast_obj 3party/fast_obj
+          git clone --depth 1 --branch main https://github.com/gflags/gflags 3party/gflags
+          git clone --depth 1 --branch main https://github.com/stephenberry/glaze 3party/glaze
+          git clone --depth 1 --branch master https://github.com/glfw/glfw.git 3party/glfw
+          git clone --depth 1 --branch master https://github.com/g-truc/glm.git 3party/glm
+          git clone --depth 1 --branch main https://github.com/google/googletest.git 3party/googletest
+          git clone --depth 1 --branch 4.2.2 https://github.com/zlib-ng/minizip-ng.git 3party/minizip-ng
+          git clone --depth 1 --branch master https://github.com/nemtrif/utfcpp.git 3party/utfcpp
+          git clone --depth 1 --branch 2.3.3 https://github.com/zlib-ng/zlib-ng.git 3party/zlib-ng
+          git clone --depth 1 --branch master https://github.com/organicmaps/freetype.git 3party/freetype/freetype
+          git clone --depth 1 --branch main https://github.com/harfbuzz/harfbuzz.git 3party/harfbuzz/harfbuzz
+          git clone --depth 1 --branch main https://github.com/unicode-org/icu.git 3party/icu/icu
+          git clone --depth 1 --branch master https://github.com/ocornut/imgui 3party/imgui/imgui
+          git clone --depth 1 --branch master https://github.com/zeux/pugixml.git 3party/pugixml/pugixml
+          git clone --depth 1 --branch master https://github.com/organicmaps/kothic.git tools/kothic
+          git clone --depth 1 --branch master https://github.com/organicmaps/osmctools.git tools/osmctools
+          git clone --depth 1 --branch organicmaps https://github.com/organicmaps/twine.git tools/python/twine
+          echo "All submodules fetched successfully."
       - name: Install build tools and dependencies (Linux)
         if: ${{ runner.os == 'Linux' }}
         run: |

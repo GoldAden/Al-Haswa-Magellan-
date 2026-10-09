@@ -1,10 +1,10 @@
-Organic Maps est une application de carte et de navigation GPS rapide, détaillée et hors ligne pour les voyages, randonnées et balades à vélo. Planifiez, importez et enregistrez vos itinéraires, et profitez d’une navigation fluide sans épuiser la batterie ni utiliser de connexion Internet. Explorez des lieux et naviguez en toute sécurité lors de vos aventures en plein air et de vos voyages autour du monde. L’application offre des téléchargements illimités de cartes et des mises à jour toutes les deux semaines. Basée sur OpenStreetMap, créée par des bénévoles, respectueuse de la vie privée, 100% hors ligne et entièrement gratuite.
+Al-Haswa Magellan est une application de carte et de navigation GPS rapide, détaillée et hors ligne pour les voyages, randonnées et balades à vélo. Planifiez, importez et enregistrez vos itinéraires, et profitez d’une navigation fluide sans épuiser la batterie ni utiliser de connexion Internet. Explorez des lieux et naviguez en toute sécurité lors de vos aventures en plein air et de vos voyages autour du monde. L’application offre des téléchargements illimités de cartes et des mises à jour toutes les deux semaines. Basée sur OpenStreetMap, créée par des bénévoles, respectueuse de la vie privée, 100% hors ligne et entièrement gratuite.
 
 HORS LIGNE : L’application fonctionne à 100% hors ligne — y compris la recherche et la navigation. Vous pouvez explorer la carte et naviguer sans connexion Internet, économisant ainsi vos données mobiles et frais d’itinérance. Et sans transfert de données en arrière-plan, votre batterie dure beaucoup plus longtemps.
 
 DÉTAILLÉE & MISE À JOUR : Les cartes sont riches en détails et mises à jour deux fois par mois pour refléter les conditions réelles. Contrairement à de nombreux concurrents bien connus, elles incluent les étiquettes de bâtiments, les bancs, les sentiers de randonnée et d’autres informations utiles.
 
-BASÉE SUR OPENSTREETMAP : OpenStreetMap est une carte mondiale de style wiki, construite et maintenue par des millions de bénévoles — des locaux qui connaissent le mieux leur région. Cet effort communautaire permet d’obtenir des cartes très détaillées, souvent plus précises que les cartes commerciales dans les régions moins cartographiées. Organic Maps met à jour ses données issues d’OpenStreetMap toutes les deux semaines, pour garder vos cartes fraîches et fiables. Si vous remarquez qu’il manque quelque chose, vous pouvez l’ajouter à OpenStreetMap et contribuer à améliorer la carte pour tous.
+BASÉE SUR OPENSTREETMAP : OpenStreetMap est une carte mondiale de style wiki, construite et maintenue par des millions de bénévoles — des locaux qui connaissent le mieux leur région. Cet effort communautaire permet d’obtenir des cartes très détaillées, souvent plus précises que les cartes commerciales dans les régions moins cartographiées. Al-Haswa Magellan met à jour ses données issues d’OpenStreetMap toutes les deux semaines, pour garder vos cartes fraîches et fiables. Si vous remarquez qu’il manque quelque chose, vous pouvez l’ajouter à OpenStreetMap et contribuer à améliorer la carte pour tous.
 
 PRIORITÉ À LA VIE PRIVÉE : Nous ne collectons aucune donnée ni identifiant. Cela signifie qu’il n’y a aucun risque de fuite de données et aucune distraction comme les publicités ou notifications bruyantes — juste une expérience cartographique propre et privée.
 
@@ -24,7 +24,7 @@ ENREGISTREUR DE PARCOURS : Enregistrez, importez, exportez et partagez vos itin�
 
 ARTICLES WIKIPEDIA : Explorez les articles Wikipedia pour les lieux découverts sur la carte. Tapez “?wiki” dans la recherche pour trouver tous les lieux avec articles Wikipedia
 
-ÉDITEUR DE CARTES : Contribuez à OpenStreetMap en ajoutant des lieux manquants ou en éditant la carte directement depuis Organic Maps
+ÉDITEUR DE CARTES : Contribuez à OpenStreetMap en ajoutant des lieux manquants ou en éditant la carte directement depuis Al-Haswa Magellan
 
 SYNCHRONISATION ICLOUD : Sauvegardez et synchronisez facilement tous vos favoris et parcours via iCloud
 

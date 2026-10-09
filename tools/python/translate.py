@@ -175,7 +175,7 @@ GOOGLE_TARGET_LANGUAGES = [
 
 # See https://developers.deepl.com/docs/getting-started/supported-languages for target languages.
 # Full list of DeepL target languages as of 2025.
-# Languages not supported by Organic Maps are commented out.
+# Languages not supported by Al-Haswa Magellan are commented out.
 DEEPL_TARGET_LANGUAGES = [
     # "ace",  # Acehnese
     "af",  # Afrikaans

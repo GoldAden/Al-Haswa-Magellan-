@@ -393,7 +393,7 @@ extension PlacePageInteractor: PlacePageHeaderViewControllerDelegate {
       switch status {
       case .success:
         guard let url else { fatalError("Invalid sharing url") }
-        let title = self.placePageData.previewData.title ?? "OrganicMaps"
+        let title = self.placePageData.previewData.title ?? "AlHaswaMagellan"
         let shareViewController = ActivityViewController.share(for: url, message: L("share_bookmarks_email_body"),
                                                                displayName: title) { [weak self] _, _, _, _ in
           self?.bookmarksManager.finishSharing()

@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in contributing to Organic Maps (OM)!
+Thank you for your interest in contributing to Al-Haswa Magellan (OM)!
 
 ## How Can I Contribute?
 
@@ -24,9 +24,9 @@ Please check if there are no similar issues already submitted by someone else.
 When reporting a bug please provide as much information as possible: OS and application versions,
 list of actions leading to a bug, a log file produced by the app.
 
-When using Organic Maps app on a device, use the built-in "Report a bug" option:
+When using Al-Haswa Magellan app on a device, use the built-in "Report a bug" option:
 on Android it creates a new e-mail with a log file attached. Your issue will be processed much
-faster if you send it to <bugs@organicmaps.app>. Enabling logs in Organic Maps settings on Android
+faster if you send it to <bugs@organicmaps.app>. Enabling logs in Al-Haswa Magellan settings on Android
 before sending the bug report also helps us a lot with debugging.
 
 If your idea is very broad or raw then instead of a specific feature request consider [starting a discussion thread](https://github.com/organicmaps/organicmaps/discussions/categories/ideas).
@@ -38,7 +38,7 @@ See [translations instructions](TRANSLATIONS.md) for details.
 
 ### UI/UX, map styling and icons
 
-Organic Maps has a strong focus on easy to use UI and smooth user experience. Feel free to join [UI/UX discussions](https://github.com/organicmaps/organicmaps/issues?q=is%3Aopen+is%3Aissue+label%3AUX) in relevant issues. Mockups are very welcome! Check some [existing designs](https://github.com/organicmaps/organicmaps/wiki/Design-Index).
+Al-Haswa Magellan has a strong focus on easy to use UI and smooth user experience. Feel free to join [UI/UX discussions](https://github.com/organicmaps/organicmaps/issues?q=is%3Aopen+is%3Aissue+label%3AUX) in relevant issues. Mockups are very welcome! Check some [existing designs](https://github.com/organicmaps/organicmaps/wiki/Design-Index).
 
 If you're into graphic design then OM needs good, clear and free-to-use icons for hundreds of map features / POIs.
 Check OM's [graphic resources and design guidelines](https://github.com/organicmaps/organicmaps/wiki#design) and existing [requests for icons](https://github.com/organicmaps/organicmaps/issues?q=is%3Aopen+is%3Aissue+label%3AIcons). Post your icons onto relevant issues or take a next step and [integrate them](STYLES.md) yourself.
@@ -77,7 +77,7 @@ Please help us:
 
 ## Submitting your changes
 
-All contributions to Organic Maps repositories should be submitted via
+All contributions to Al-Haswa Magellan repositories should be submitted via
 [Github pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
 and signed-off with the [Developers Certificate of Origin](#legal-requirements).
 

@@ -131,7 +131,7 @@
       <mwm:lang code="default">Test description</mwm:lang>
     </mwm:description>
     <mwm:imageUrl>https://localhost/123.png</mwm:imageUrl>
-    <mwm:author id="12345">Organic Maps</mwm:author>
+    <mwm:author id="12345">Al-Haswa Magellan</mwm:author>
     <mwm:lastModified>1970-01-01T00:16:40Z</mwm:lastModified>
     <mwm:rating>8.9</mwm:rating>
     <mwm:reviewsNumber>567</mwm:reviewsNumber>

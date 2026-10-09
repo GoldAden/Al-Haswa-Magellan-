@@ -6,7 +6,7 @@ import dalvik.annotation.optimization.FastNative;
 import java.util.List;
 import java.util.stream.IntStream;
 
-/// The canonical Organic Maps preset color palette: the brand colors that back kml::PredefinedColor,
+/// The canonical Al-Haswa Magellan preset color palette: the brand colors that back kml::PredefinedColor,
 /// fetched once from the core via JNI as ARGB. Used to seed the color picker's preset swatches so
 /// they match the presets shown on desktop and iOS.
 public class PredefinedColors

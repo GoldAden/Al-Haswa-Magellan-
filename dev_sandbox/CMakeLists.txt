@@ -101,7 +101,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${OMIM_ROOT}/3party/glfw/inclu
 target_include_directories(${PROJECT_NAME} PUBLIC ${OMIM_ROOT}/3party/imgui)
 
 set(BUNDLE_NAME "OMapsDevSandbox")
-set(BUNDLE_DISPLAY_NAME "Organic Maps: Developer Sandbox")
+set(BUNDLE_DISPLAY_NAME "Al-Haswa Magellan: Developer Sandbox")
 
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${BUNDLE_NAME})
 

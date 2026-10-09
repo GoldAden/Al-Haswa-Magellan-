@@ -19,6 +19,6 @@ dependencies {
 
 Publish(project, [
     'artifactId' : 'widgets-lanes',
-    'name'       : 'Organic Maps SDK. Lanes widget',
-    'description': 'A library that provides a lanes widget for the Organic Maps SDK'
+    'name'       : 'Al-Haswa Magellan SDK. Lanes widget',
+    'description': 'A library that provides a lanes widget for the Al-Haswa Magellan SDK'
 ])

@@ -35,4 +35,4 @@ Translations via Weblate are not supported anymore for several reasons:
 - Weblate is quite expensive for a free, donation-based project with so many translations
 - Other issues mentioned in https://github.com/organicmaps/organicmaps/issues/11569
 
-The situation may change if someone implements a Weblate plugin that uses and generates Twine-compatible translation files used by Organic Maps, and supports the Markdown file structure used in Zola- and Hugo-like static site generators.
+The situation may change if someone implements a Weblate plugin that uses and generates Twine-compatible translation files used by Al-Haswa Magellan, and supports the Markdown file structure used in Zola- and Hugo-like static site generators.

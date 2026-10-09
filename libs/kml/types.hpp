@@ -529,7 +529,7 @@ struct CategoryData
 
   // Unique id (it will not be serialized in text files).
   MarkGroupId m_id = kInvalidMarkGroupId;
-  // Vestigial leftovers of the MAPS.ME-only "Collections" feature. Organic Maps neither creates
+  // Vestigial leftovers of the MAPS.ME-only "Collections" feature. Al-Haswa Magellan neither creates
   // nor shows collections, but the fields keep their slots in the KMB layout (see
   // kml::binary::Version) so that files stay compatible. They always hold the values below:
   // whatever is read from a file is dropped by binary::DeserializerKml::DropCompilationReferences.

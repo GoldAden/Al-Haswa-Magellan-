@@ -2,7 +2,7 @@
 
 // Bidirectional converters between the vendored `opening_hours` AST (port of
 // opening-hours-rs, in oh/parser.hpp) and the `osmoh` AST used across
-// Organic Maps (routing serdes, the editor, transit). The port drives parsing
+// Al-Haswa Magellan (routing serdes, the editor, transit). The port drives parsing
 // and evaluation; the osmoh AST is kept as the app-facing data model so that
 // GetRule()/operator<< and the mwm serialization format stay unchanged.
 

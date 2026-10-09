@@ -1,14 +1,14 @@
 ---
 name: om-review
-description: Review current code changes or PR for architecture, design, simplicity, bugs, style issues, and potential problems specific to Organic Maps
+description: Review current code changes or PR for architecture, design, simplicity, bugs, style issues, and potential problems specific to Al-Haswa Magellan
 argument-hint: "[pr-number|commit-sha|sha1..sha2|staged|all|branch]"
 allowed-tools: [ Bash, Glob, Grep, Read ]
 disable-model-invocation: true
 ---
 
-# Code Review for Organic Maps
+# Code Review for Al-Haswa Magellan
 
-Review code changes for architecture, design, simplicity, bugs, style issues, and Organic Maps-specific problems.
+Review code changes for architecture, design, simplicity, bugs, style issues, and Al-Haswa Magellan-specific problems.
 
 ## Arguments
 
@@ -514,7 +514,7 @@ related files together.
 
 #### Affected subsystems & impact radius
 
-Identify which Organic Maps subsystems are touched (use categories from "File Type Detection"
+Identify which Al-Haswa Magellan subsystems are touched (use categories from "File Type Detection"
 and "Key Files Reference" sections). Note cross-platform impact (e.g., "Core C++ change
 affecting all platforms" vs "Android-only UI change"). List key callers affected (from
 Step 2d) if any public API changed.
@@ -593,7 +593,7 @@ When detected:
 - Command injection (shell commands with user input)
 - Path traversal (unsanitized file paths)
 - XSS in WebView content
-- No analytics or tracking code (Organic Maps is privacy-first)
+- No analytics or tracking code (Al-Haswa Magellan is privacy-first)
 - No unauthorized network requests or PII logging
 - Weak hash algorithms (MD5, SHA1 for security purposes)
 - Hardcoded IVs, salts, or insecure random number generation
@@ -1270,7 +1270,7 @@ After posting, report:
 
 **Note:** If `--post` flag is not specified, only output the review to console.
 
-## Organic Maps Specific Guidelines
+## Al-Haswa Magellan Specific Guidelines
 
 When reviewing, consider:
 

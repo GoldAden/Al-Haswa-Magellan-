@@ -56,7 +56,7 @@ extension UIFont {
 
 extension UIFont {
   static func emojiFont(ofSize fontSize: CGFloat, weight: UIFont.Weight) -> UIFont {
-    guard let emojiFont = UIFont(name: "OrganicMapsEmoji", size: fontSize) else {
+    guard let emojiFont = UIFont(name: "AlHaswaMagellanEmoji", size: fontSize) else {
       return systemFont(ofSize: fontSize, weight: weight)
     }
     let fallbackFont = systemFont(ofSize: fontSize, weight: weight)

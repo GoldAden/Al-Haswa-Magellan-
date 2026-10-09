@@ -62,7 +62,7 @@ kml::FileData GenerateKmlFileData()
   result.m_categoryData.m_annotation[kEnLang] = "Test annotation";
   result.m_categoryData.m_imageUrl = "https://localhost/123.png";
   result.m_categoryData.m_visible = true;
-  result.m_categoryData.m_authorName = "Organic Maps";
+  result.m_categoryData.m_authorName = "Al-Haswa Magellan";
   result.m_categoryData.m_authorId = "12345";
   result.m_categoryData.m_rating = 8.9;
   result.m_categoryData.m_reviewsNumber = 567;

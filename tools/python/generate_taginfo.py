@@ -10,12 +10,12 @@ TAGINFO_FILE: Path = SCRIPT_DIR / "../../data/taginfo.json"
 BASE_ICON_URL: str = "https://raw.githubusercontent.com/organicmaps/organicmaps/master/data/styles/default/light/symbols/"
 
 PROJECT_INFO: dict[str, str] = {
-    "name": "Organic Maps",
+    "name": "Al-Haswa Magellan",
     "description": "Free Android & iOS offline maps app for travelers, tourists, hikers, and cyclists",
     "project_url": "https://organicmaps.app",
     "doc_url": "https://github.com/organicmaps/organicmaps",
     "icon_url": "https://organicmaps.app/logos/green-on-transparent.svg",
-    "contact_name": "Organic Maps",
+    "contact_name": "Al-Haswa Magellan",
     "contact_email": "hello@organicmaps.app"
 }
 

@@ -208,7 +208,7 @@ int main(int argc, char * argv[])
 
   Platform & platform = GetPlatform();
 
-  LOG(LINFO, ("Organic Maps: Developer Sandbox", platform.Version(), "detected CPU cores:", platform.CpuCores()));
+  LOG(LINFO, ("Al-Haswa Magellan: Developer Sandbox", platform.Version(), "detected CPU cores:", platform.CpuCores()));
 
   gflags::SetUsageMessage("Developer Sandbox.");
   gflags::SetVersionString(platform.Version());
@@ -244,7 +244,7 @@ int main(int argc, char * argv[])
   auto monitor = glfwGetPrimaryMonitor();
   auto mode = glfwGetVideoMode(monitor);
   GLFWwindow * window =
-      glfwCreateWindow(mode->width, mode->height, "Organic Maps: Developer Sandbox", nullptr, nullptr);
+      glfwCreateWindow(mode->width, mode->height, "Al-Haswa Magellan: Developer Sandbox", nullptr, nullptr);
   int fbWidth = 0, fbHeight = 0;
   glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
   float xs = 1.0f, ys = 1.0f;

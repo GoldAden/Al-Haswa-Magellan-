@@ -125,7 +125,7 @@ public class MapButtonsController extends Fragment
     if (northButton != null)
     {
       northButton.setOnClickListener((v) -> mMapButtonClickListener.onMapButtonClick(MapButtons.north));
-      northButton.setVisibility(View.VISIBLE);  // Al-Haswa: always show compass button
+      northButton.setVisibility(View.VISIBLE); // Al-Haswa: always show compass button
     }
 
     // Some buttons do not exist in navigation mode
@@ -211,9 +211,7 @@ public class MapButtonsController extends Fragment
       if (mNavMyPosition != null)
         mNavMyPosition.showButton(show);
       break;
-    case north:
-      UiUtils.showIf(show, buttonView);
-      break;
+    case north: UiUtils.showIf(show, buttonView); break;
     case search: mSearchWheel.show(show); break;
     case bookmarks:
     case menu: UiUtils.showIf(show, buttonView); break;
@@ -565,8 +563,8 @@ public class MapButtonsController extends Fragment
     }
 
     @Override
-    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop,
-                               int oldRight, int oldBottom)
+    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight,
+                               int oldBottom)
     {
       mContentHeight = bottom - top;
       mContentWidth = right - left;

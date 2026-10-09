@@ -23,6 +23,8 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.KeyEvent;
@@ -74,8 +76,6 @@ import app.organicmaps.routing.RoutingErrorDialogFragment;
 import app.organicmaps.routing.RoutingPlanController;
 import app.organicmaps.routing.RoutingPlanFragment;
 import app.organicmaps.routing.RoutingPlanViewModel;
-import android.os.Handler;
-import android.os.Looper;
 import app.organicmaps.sdk.ChoosePositionMode;
 import app.organicmaps.sdk.Framework;
 import app.organicmaps.sdk.Map;
@@ -820,7 +820,7 @@ public class MwmActivity extends BaseMwmFragmentActivity
     {
     case zoomIn -> Map.zoomIn();
     case zoomOut -> Map.zoomOut();
-      case north -> Map.resetToNorth();
+    case north -> Map.resetToNorth();
     case myPosition ->
     {
       Logger.i(LOCATION_TAG, "The location button pressed");
@@ -1662,8 +1662,7 @@ public class MwmActivity extends BaseMwmFragmentActivity
     if (mViewportPollHandler != null)
       return;
     mViewportPollHandler = new Handler(Looper.getMainLooper());
-    mViewportPollRunnable = new Runnable()
-    {
+    mViewportPollRunnable = new Runnable() {
       @Override
       public void run()
       {
@@ -1675,7 +1674,8 @@ public class MwmActivity extends BaseMwmFragmentActivity
           // For negative values, add 360
           if (angleDeg < 0)
             angleDeg += 360.0;
-          MapButtonsController mbc = (MapButtonsController) getSupportFragmentManager().findFragmentById(R.id.map_buttons);
+          MapButtonsController mbc =
+              (MapButtonsController) getSupportFragmentManager().findFragmentById(R.id.map_buttons);
           if (mbc != null)
             mbc.updateNorthButtonVisibility(angleDeg);
         }

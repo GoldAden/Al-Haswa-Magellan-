@@ -46,21 +46,21 @@ ext.Publish = { Project project, Map<String, Object> props ->
             distribution = 'repo'
           }
           license {
-            name = 'Organic Maps Binary Data License'
+            name = 'Al-Haswa Magellan Binary Data License'
             url = 'https://github.com/organicmaps/organicmaps/blob/master/DATA_LICENSE.txt'
             distribution = 'repo'
           }
         }
 
         organization {
-          name = 'Organic Maps'
+          name = 'Al-Haswa Magellan'
           url = 'https://organicmaps.app'
         }
 
         developers {
           developer {
-            id = 'OrganicMaps'
-            name = 'Organic Maps Team'
+            id = 'AlHaswaMagellan'
+            name = 'Al-Haswa Magellan Team'
             email = 'sdk@organicmaps.app'
             organizationUrl = 'https://organicmaps.app'
           }

@@ -16,9 +16,9 @@ import app.organicmaps.sdk.display.DisplayType;
 
 public class MapPlaceholderScreen extends BaseScreen
 {
-  public MapPlaceholderScreen(@NonNull CarContext carContext, @NonNull OrganicMaps organicMapsContext)
+  public MapPlaceholderScreen(@NonNull CarContext carContext, @NonNull OrganicMaps alHaswaMagellanContext)
   {
-    super(carContext, organicMapsContext);
+    super(carContext, alHaswaMagellanContext);
   }
 
   @NonNull

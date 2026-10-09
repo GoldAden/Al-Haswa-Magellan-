@@ -1582,7 +1582,7 @@ void RoutingManager::SetRouter(RouterType type)
   // completes (Framework::InitRouting). SetRouter() can be called earlier (e.g. route restoration
   // triggers onRoutePointsLoaded → RoutingController.prepare → Router.set before maps finish loading).
   // Deferring is safe: Init() calls SetRouterImpl(GetLastUsedRouter()), picking up the type saved above.
-  /// @TODO(AB): The proper fix is to not set mFrameworkInitialized=true in Android's OrganicMaps.java
+  /// @TODO(AB): The proper fix is to not set mFrameworkInitialized=true in Android's AlHaswaMagellan.java
   /// until the async native callback fires, so Java subsystems never see a half-initialized core.
   if (!m_numMwmIDs)
     return;

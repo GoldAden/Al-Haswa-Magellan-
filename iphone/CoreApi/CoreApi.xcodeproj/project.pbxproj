@@ -619,7 +619,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastUpgradeCheck = 2700;
-				ORGANIZATIONNAME = "Organic Maps";
+				ORGANIZATIONNAME = "Al-Haswa Magellan";
 				TargetAttributes = {
 					470015EE2342509C00EBF03D = {
 						CreatedOnToolsVersion = 10.2;

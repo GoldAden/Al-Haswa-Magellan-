@@ -39,10 +39,10 @@ public class RequestPermissionsScreenWithNotification extends BaseScreen impleme
   private final Runnable mPermissionsGrantedCallback;
 
   public RequestPermissionsScreenWithNotification(@NonNull CarContext carContext,
-                                                  @NonNull OrganicMaps organicMapsContext,
+                                                  @NonNull OrganicMaps alHaswaMagellanContext,
                                                   @NonNull Runnable permissionsGrantedCallback)
   {
-    super(carContext, organicMapsContext);
+    super(carContext, alHaswaMagellanContext);
     mBackgroundExecutor = ThreadPool.getWorker();
     mPermissionsGrantedCallback = permissionsGrantedCallback;
   }

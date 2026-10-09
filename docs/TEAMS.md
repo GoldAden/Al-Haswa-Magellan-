@@ -1,6 +1,6 @@
 # Teams
 
-Organic Maps is led by community contributors, with functional domains occasionally establishing or dissolving their leadership structures, formal or informal. This file outlines the functional project structure that has evolved over time. The current list of teams is available on [GitHub](https://github.com/orgs/organicmaps/teams), accessible only to [GitHub Org members](https://github.com/orgs/organicmaps/people) due to the limitations of GitHub.
+Al-Haswa Magellan is led by community contributors, with functional domains occasionally establishing or dissolving their leadership structures, formal or informal. This file outlines the functional project structure that has evolved over time. The current list of teams is available on [GitHub](https://github.com/orgs/organicmaps/teams), accessible only to [GitHub Org members](https://github.com/orgs/organicmaps/people) due to the limitations of GitHub.
 
 Teams are typically assigned as code owners for certain sections of the repository. GitHub will automatically request a review from the responsible team when changes are made to the relevant part of the repository in a pull request. See the [CODEOWNERS](../.github/CODEOWNERS) file for more information. Please feel free to tag the relevant team in the comments if you need assistance in a specific area. If you are unsure which team to contact, please tag [@organicmaps/triage](https://github.com/orgs/organicmaps/teams/contributors/triage) for help.
 

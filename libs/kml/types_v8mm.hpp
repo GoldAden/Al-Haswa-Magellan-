@@ -231,7 +231,7 @@ struct CategoryDataV8MM
   Properties m_properties;
 };
 
-// MapsMe V8/V9 files omit the compilations section present in the Organic Maps V8/V9 layout.
+// MapsMe V8/V9 files omit the compilations section present in the Al-Haswa Magellan V8/V9 layout.
 template <class TrackDataT>
 struct FileDataMMImpl
 {
