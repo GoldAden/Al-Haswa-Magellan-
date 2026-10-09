@@ -127,7 +127,6 @@ JNIEXPORT jdouble Java_app_organicmaps_sdk_Map_nativeGetViewportRotationAngle(JN
   return g_framework->NativeFramework()->GetViewportAngle();
 }
 
-
 JNIEXPORT void Java_app_organicmaps_sdk_Map_nativeScalePlus(JNIEnv *, jclass)
 {
   g_framework->Scale(::Framework::SCALE_MAG);
