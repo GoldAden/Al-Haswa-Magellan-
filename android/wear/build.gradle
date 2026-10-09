@@ -2,12 +2,14 @@ plugins {
     id 'com.android.application'
 }
 
+apply plugin: 'org.jetbrains.kotlin.android'
+
 apply from: "${rootProject.rootDir}/groovy/common-config.gradle"
 apply from: "${rootProject.rootDir}/groovy/application-signing.gradle"
 
 android {
     namespace 'app.organicmaps.wear'
-    enableKotlin = true  // see app/build.gradle
+    project.ext.enableKotlin = true  // see app/build.gradle
 
     defaultConfig {
         applicationId rootProject.ext.appId

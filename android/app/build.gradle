@@ -18,6 +18,7 @@ ext.googleFirebaseServicesEnabled = googleServicesFileValid &&
         googleFirebaseServicesDefault)
 
 apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
 // apply plugin: 'com.github.triplet.play'  // Disabled: plugin not found in repos
 // apply plugin: 'ru.cian.huawei-publish-gradle-plugin'  // Disabled: not needed for Al-Haswa build
 

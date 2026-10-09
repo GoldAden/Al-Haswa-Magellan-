@@ -2,6 +2,8 @@ plugins {
   id 'com.android.library'
 }
 
+apply plugin: 'org.jetbrains.kotlin.android'
+
 apply from: "${rootProject.rootDir}/groovy/common-config.gradle"
 apply from: "${rootProject.rootDir}/groovy/publishing.gradle"
 

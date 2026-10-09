@@ -1,6 +1,12 @@
 // Use the following command to apply common configuration to your module:
 // apply from: "${rootProject.rootDir}/groovy/common-config.gradle"
 
+// Kotlin: Modules that need Kotlin should apply the kotlin-android plugin
+// BEFORE applying this script, e.g.:
+//   apply plugin: 'org.jetbrains.kotlin.android'
+//   apply from: "${rootProject.rootDir}/groovy/common-config.gradle"
+//   project.ext.enableKotlin = true
+
 android {
   compileSdk = propCompileSdkVersion.toInteger()
   ndkVersion = propNdkVersion
@@ -30,10 +36,7 @@ android {
 
 afterEvaluate {
   if (project.ext.enableKotlin) {
-    // Apply Kotlin Android plugin for AGP 8.x (AGP 9.x has built-in Kotlin support)
-    apply plugin: 'org.jetbrains.kotlin.android'
-
-    // Configure Kotlin compilation options
+    // Configure Kotlin compilation options (plugin must be applied in module build.gradle)
     kotlinOptions {
       jvmTarget = '17'
     }

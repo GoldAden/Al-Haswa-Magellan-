@@ -2,11 +2,13 @@ plugins {
   id 'com.android.library'
 }
 
+apply plugin: 'org.jetbrains.kotlin.android'
+
 apply from: "${rootProject.rootDir}/groovy/common-config.gradle"
 
 android {
   namespace = 'app.organicmaps.sdk.wear'
-  enableKotlin = true  // see app/build.gradle
+  project.ext.enableKotlin = true  // see app/build.gradle
 }
 
 dependencies {
