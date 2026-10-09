@@ -3,7 +3,7 @@ on:
   workflow_dispatch: # Manual trigger
 
 env:
-  JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64  # Java 17 is required for Android Gradle 8 plugin
+  JAVA_HOME: /usr/lib/jvm/temurin-21-jdk-amd64  # Java 21 is required for AGP 9.x
 
 jobs:
   android-release-metadata:
@@ -19,7 +19,7 @@ jobs:
         with:
           repository: ${{ secrets.SCREENSHOTS_REPO }}
           ssh-key: ${{ secrets.SCREENSHOTS_SSH_KEY }}
-          ref: master
+          ref: main
           path: screenshots
 
       - name: Restore release keys
