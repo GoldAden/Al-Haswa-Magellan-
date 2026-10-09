@@ -1,0 +1,195 @@
+name: Android Beta
+on:
+  workflow_dispatch: # Manual trigger
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - .gitignore
+      - .github/**
+      - '!.github/workflows/android-beta.yaml'  # Run check on self change
+      - '**/*_tests/**'
+      - '**/CMakeLists.txt'
+      - CONTRIBUTORS
+      - LICENSE
+      - NOTICE
+      - README.md
+      - iphone/**
+      - data/strings/**
+      - docs/**
+      - generator/**
+      - packaging/**
+      - platform/*apple*
+      - platform/*_ios*
+      - platform/*_linux*
+      - platform/*_mac*
+      - platform/*qt*
+      - platform/*_win*
+      - qt*/**
+      - skin_generator/**
+      - tools/**
+      - track_generator/**
+      - xcode/**
+env:
+  JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64  # Java 17 is required for Android Gradle 8 plugin
+jobs:
+  android-google-beta:
+    name: Android Google Beta
+    runs-on: ubuntu-latest
+    environment: beta
+    steps:
+      - name: Install build tools and dependencies
+        shell: bash
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y ninja-build
+      - name: Checkout sources
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 100 # enough to get all commits for the current day
+      - name: Parallel submodules checkout
+        shell: bash
+        run: git submodule update --depth 1 --init --recursive --jobs=$(($(nproc) * 20))
+      - name: Restore beta keys
+        shell: bash
+        run: |
+          # ── Remove stale decoded files from previous runs ──
+          rm -f android/app/google-services.json
+          rm -f android/app/firebase-app-distribution.json
+          rm -f android/app/secure.properties
+          rm -f android/app/release.keystore
+
+          # ── PRIVATE_H ──
+          # Only overwrite if the secret contains valid base64 AND the required defines.
+          if [[ -n "$PRIVATE_H" ]]; then
+            if echo "$PRIVATE_H" | base64 -d > private.h.candidate 2>/dev/null; then
+              if grep -q '^#define METASERVER_URL ' private.h.candidate && \
+                 grep -q '^#define DEFAULT_URLS_JSON ' private.h.candidate; then
+                mv private.h.candidate private.h
+                echo "Restored private.h from secret."
+              else
+                echo "PRIVATE_H secret missing required defines; keeping checked-in private.h"
+                rm -f private.h.candidate
+              fi
+            else
+              echo "PRIVATE_H is not valid base64; keeping checked-in private.h"
+              rm -f private.h.candidate 2>/dev/null || true
+            fi
+          else
+            echo "PRIVATE_H not set; keeping checked-in private.h"
+          fi
+
+          # ── GOOGLE_SERVICES_JSON ──
+          # Only create the file when the secret decodes to valid JSON.
+          # If the file is absent the Gradle google-services plugin is NOT applied.
+          if [[ -n "$GOOGLE_SERVICES_JSON" ]]; then
+            if echo "$GOOGLE_SERVICES_JSON" | base64 -d > android/app/google-services.json.tmp 2>/dev/null; then
+              if python3 -c "import json,sys; json.load(open('android/app/google-services.json.tmp'))" 2>/dev/null; then
+                mv android/app/google-services.json.tmp android/app/google-services.json
+                echo "Restored google-services.json from secret."
+                echo "HAS_GOOGLE_SERVICES=true" >> "$GITHUB_ENV"
+              else
+                echo "GOOGLE_SERVICES_JSON decoded but is not valid JSON; Firebase will be disabled."
+                rm -f android/app/google-services.json.tmp
+                echo "HAS_GOOGLE_SERVICES=false" >> "$GITHUB_ENV"
+              fi
+            else
+              echo "GOOGLE_SERVICES_JSON is not valid base64; Firebase will be disabled."
+              rm -f android/app/google-services.json.tmp 2>/dev/null || true
+              echo "HAS_GOOGLE_SERVICES=false" >> "$GITHUB_ENV"
+            fi
+          else
+            echo "GOOGLE_SERVICES_JSON not set; Firebase will be disabled."
+            echo "HAS_GOOGLE_SERVICES=false" >> "$GITHUB_ENV"
+          fi
+
+          # ── FIREBASE_APP_DISTRIBUTION_JSON ──
+          # Only create the file when the secret decodes to valid JSON.
+          if [[ -n "$FIREBASE_APP_DISTRIBUTION_JSON" ]]; then
+            if echo "$FIREBASE_APP_DISTRIBUTION_JSON" | base64 -d > android/app/firebase-app-distribution.json.tmp 2>/dev/null; then
+              if python3 -c "import json,sys; json.load(open('android/app/firebase-app-distribution.json.tmp'))" 2>/dev/null; then
+                mv android/app/firebase-app-distribution.json.tmp android/app/firebase-app-distribution.json
+                echo "Restored firebase-app-distribution.json from secret."
+                echo "HAS_FIREBASE_DISTRIBUTION=true" >> "$GITHUB_ENV"
+              else
+                echo "FIREBASE_APP_DISTRIBUTION_JSON decoded but is not valid JSON; App Distribution upload will be skipped."
+                rm -f android/app/firebase-app-distribution.json.tmp
+                echo "HAS_FIREBASE_DISTRIBUTION=false" >> "$GITHUB_ENV"
+              fi
+            else
+              echo "FIREBASE_APP_DISTRIBUTION_JSON is not valid base64; App Distribution upload will be skipped."
+              rm -f android/app/firebase-app-distribution.json.tmp 2>/dev/null || true
+              echo "HAS_FIREBASE_DISTRIBUTION=false" >> "$GITHUB_ENV"
+            fi
+          else
+            echo "FIREBASE_APP_DISTRIBUTION_JSON not set; App Distribution upload will be skipped."
+            echo "HAS_FIREBASE_DISTRIBUTION=false" >> "$GITHUB_ENV"
+          fi
+
+          # ── SECURE_PROPERTIES ──
+          # Only create the file when the decoded content is non-empty.
+          # If the file is absent the Gradle signing script falls back to debug signing.
+          if [[ -n "$SECURE_PROPERTIES" ]]; then
+            echo "$SECURE_PROPERTIES" | base64 -d > android/app/secure.properties.tmp 2>/dev/null
+            if [[ -s android/app/secure.properties.tmp ]]; then
+              mv android/app/secure.properties.tmp android/app/secure.properties
+              echo "Restored secure.properties from secret."
+            else
+              echo "SECURE_PROPERTIES decoded to empty file; release signing will use debug keys."
+              rm -f android/app/secure.properties.tmp
+            fi
+          else
+            echo "SECURE_PROPERTIES not set; release signing will use debug keys."
+          fi
+
+          # ── RELEASE_KEYSTORE ──
+          # Only create the file when the decoded binary is non-empty.
+          if [[ -n "$RELEASE_KEYSTORE" ]]; then
+            echo "$RELEASE_KEYSTORE" | base64 -d > android/app/release.keystore.tmp 2>/dev/null
+            if [[ -s android/app/release.keystore.tmp ]]; then
+              mv android/app/release.keystore.tmp android/app/release.keystore
+              echo "Restored release.keystore from secret."
+            else
+              echo "RELEASE_KEYSTORE decoded to empty file; using debug keystore."
+              rm -f android/app/release.keystore.tmp
+            fi
+          else
+            echo "RELEASE_KEYSTORE not set; using debug keystore."
+          fi
+        env:
+          PRIVATE_H: ${{ secrets.PRIVATE_H }}
+          FIREBASE_APP_DISTRIBUTION_JSON: ${{ secrets.FIREBASE_APP_DISTRIBUTION_JSON }}
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          SECURE_PROPERTIES: ${{ secrets.SECURE_PROPERTIES }}
+          RELEASE_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE }}
+      - name: Compile
+        shell: bash
+        working-directory: android
+        run: |
+          cmake --version
+          ninja --version
+          echo "ANDROID_CODE=$(../tools/unix/version.sh android_code)" >> "$GITHUB_ENV"
+          if [[ "$HAS_GOOGLE_SERVICES" == "true" ]]; then
+            ./gradlew -Pfirebase assembleGoogleBeta uploadCrashlyticsSymbolFileGoogleBeta uploadCrashlyticsMappingFileGoogleBeta
+          else
+            echo "google-services.json unavailable — building without Firebase"
+            ./gradlew assembleGoogleBeta
+          fi
+      - name: Upload beta apk to App Distribution
+        if: env.HAS_FIREBASE_DISTRIBUTION == 'true'
+        shell: bash
+        working-directory: android
+        run: |
+          ./gradlew appDistributionUploadGoogleBeta
+      - name: Upload beta apk to GitHub artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: OrganicMaps-${{ env.ANDROID_CODE }}-google-beta.apk
+          path: android/app/build/outputs/apk/google/beta/OrganicMaps-${{ env.ANDROID_CODE }}-google-beta.apk
+          if-no-files-found: error
+      - name: Upload beta debug symbols to GitHub artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: native-debug-symbols.zip
+          path: android/app/build/outputs/native-debug-symbols/googleBeta/native-debug-symbols.zip
+          if-no-files-found: error

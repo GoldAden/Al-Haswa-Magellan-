@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D1B2A">
+
+    <!-- Fullscreen Compass View -->
+    <app.organicmaps.hawsa.CompassView
+        android:id="@+id/compass_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="180dp" />
+
+    <!-- Top bar with back button and title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="top"
+        android:background="#800D1B2A"
+        android:layoutDirection="rtl">
+
+        <ImageView
+            android:id="@+id/btn_compass_back"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_hawsa_back"
+            android:contentDescription="@string/hawsa_back"
+            app:tint="#D4AF37"
+            android:padding="4dp" />
+
+        <TextView
+            android:id="@+id/tv_compass_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hawsa_compass_title"
+            android:textSize="20sp"
+            android:textColor="#D4AF37"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingEnd="36dp" />
+    </LinearLayout>
+
+    <!-- Qibla direction info -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="170dp"
+        android:background="#B30D1B2A"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_qibla_direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#D4AF37"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_qibla_degrees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="#778DA9" />
+
+        <TextView
+            android:id="@+id/tv_qibla_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#D4AF37"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Azan times panel at bottom -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:background="#E60D1B2A"
+        android:padding="16dp"
+        android:layoutDirection="rtl">
+
+        <!-- Azan times header: أوقات الأذان (changed from أوقات الصلاة) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="أوقات الأذان"
+            android:textSize="17sp"
+            android:textColor="#D4AF37"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:id="@+id/prayer_times_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <!-- Designer credit -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hawsa_designer_credit"
+            android:textSize="10sp"
+            android:textColor="#415A77"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+</FrameLayout>
