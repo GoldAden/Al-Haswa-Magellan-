@@ -30,6 +30,19 @@ android {
 
 afterEvaluate {
   if (project.ext.enableKotlin) {
+    // Apply Kotlin Android plugin for AGP 8.x (AGP 9.x has built-in Kotlin support)
+    apply plugin: 'org.jetbrains.kotlin.android'
+
+    // Configure Kotlin compilation options
+    kotlinOptions {
+      jvmTarget = '17'
+    }
+
+    // Add Kotlin standard library dependency
+    dependencies {
+      implementation libs.kotlin.stdlib
+    }
+
     configurations {
       ktlint
       detekt
