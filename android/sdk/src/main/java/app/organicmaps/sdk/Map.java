@@ -91,7 +91,8 @@ public final class Map
    *
    * @param context     Context.
    * @param offsetX     Pixel offset from the right. -1 to keep the previous value.
-   * @param offsetY     Pixel offset from the BOTTOM (Al-Haswa: compass is above zoom buttons). -1 to keep the previous value.
+   * @param offsetY     Pixel offset from the BOTTOM (Al-Haswa: compass is above zoom buttons). -1 to keep the previous
+   *     value.
    * @param forceRedraw True to force the compass to redraw
    */
   public void updateCompassOffset(final Context context, int offsetX, int offsetY, boolean forceRedraw)
