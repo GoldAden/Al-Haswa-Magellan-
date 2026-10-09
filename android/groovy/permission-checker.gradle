@@ -90,7 +90,17 @@ ext.registerCheckApkPermissionsTasks = { Project project, List<String> allowedPe
       task.allowedPermissions = project.objects.listProperty(Pattern).value(
           allowedPermissions.collect { it instanceof Pattern ? it : Pattern.compile(it) }
       )
-      task.aapt2Executable = project.androidComponents.sdkComponents.aapt2.get().executable.getAsFile()
+
+      // AGP 8.x compatibility: sdkComponents.aapt2 was added in AGP 9.x.
+      // In AGP 8.x, resolve aapt2 from the SDK build-tools directory.
+      try {
+        task.aapt2Executable = project.androidComponents.sdkComponents.aapt2.get().executable.getAsFile()
+      } catch (Exception ignored) {
+        // Fallback for AGP 8.x: construct aapt2 path from SDK directory + build tools version
+        def sdkDir = project.android.sdkDirectory
+        def buildToolsVer = project.android.buildToolsVersion
+        task.aapt2Executable = project.file("${sdkDir}/build-tools/${buildToolsVer}/aapt2")
+      }
     }
 
     // Automatically run after assemble<Variant> when such task exists.
