@@ -3070,7 +3070,7 @@ bool Framework::IsShowDownloadedRegions()
 {
   bool showDownloadedRegions;
   if (!settings::Get(kShowDownloadedRegions, showDownloadedRegions))
-    showDownloadedRegions = true;
+    showDownloadedRegions = false;  // Disabled by default for Al-Haswa Magellan
   return showDownloadedRegions;
 }
 

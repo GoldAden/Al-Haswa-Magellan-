@@ -48,36 +48,16 @@ public:
 
   bool Update(ScreenBase const & screen) override
   {
-    static double const kVisibleStartAngle = math::DegToRad(5.0);
-    static double const kVisibleEndAngle = math::DegToRad(355.0);
+    // Al-Haswa Magellan: Compass is always visible on the map screen
+    SetIsVisible(true);
+    m_animation.ShowAnimated();
+    TBase::Update(screen);
 
     auto const angle = static_cast<float>(ang::AngleIn2PI(screen.GetAngle()));
-
-    bool isVisiblePrev = IsVisible();
-    bool isVisibleAngle = angle > kVisibleStartAngle && angle < kVisibleEndAngle;
-
-    bool isVisible = isVisibleAngle || (isVisiblePrev && DrapeGui::Instance().IsInUserAction());
-
-    if (isVisible)
-    {
-      m_animation.ShowAnimated();
-      SetIsVisible(true);
-    }
-    else
-      m_animation.HideAnimated();
-
-    if (IsVisible())
-    {
-      TBase::Update(screen);
-
-      glsl::mat4 r = glsl::rotate(glsl::mat4(1.f), angle, glsl::vec3(0.0, 0.0, 1.0));
-      glsl::mat4 m = glsl::translate(glsl::mat4(1.f), glsl::vec3(m_pivot, 0.0));
-      m_params.m_modelView = glsl::transpose(m * r);
-      m_params.m_opacity = static_cast<float>(m_animation.GetT());
-    }
-
-    if (m_animation.IsFinished())
-      SetIsVisible(isVisible);
+    glsl::mat4 r = glsl::rotate(glsl::mat4(1.f), angle, glsl::vec3(0.0, 0.0, 1.0));
+    glsl::mat4 m = glsl::translate(glsl::mat4(1.f), glsl::vec3(m_pivot, 0.0));
+    m_params.m_modelView = glsl::transpose(m * r);
+    m_params.m_opacity = static_cast<float>(m_animation.GetT());
 
     return true;
   }

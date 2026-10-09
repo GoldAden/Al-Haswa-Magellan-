@@ -50,7 +50,8 @@ void LayerRenderer::Render(ref_ptr<dp::GraphicsContext> context, ref_ptr<gpu::Pr
 
   for (auto & r : m_renderers)
   {
-    if (routingActive && (r.first == gui::WIDGET_COMPASS || r.first == gui::WIDGET_RULER))
+    // Al-Haswa: Compass stays visible even during routing (no longer hiding it)
+    if (routingActive && (r.first == gui::WIDGET_RULER))
       continue;
 
     r.second->Render(context, mng, screen);

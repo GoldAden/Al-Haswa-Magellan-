@@ -120,13 +120,7 @@ public class MapButtonsController extends Fragment
     mNavMyPosition =
         new MyPositionButton(myPosition, (v) -> mMapButtonClickListener.onMapButtonClick(MapButtons.myPosition));
 
-    // North/Compass button
-    final View northButton = mFrame.findViewById(R.id.nav_north);
-    if (northButton != null)
-    {
-      northButton.setOnClickListener((v) -> mMapButtonClickListener.onMapButtonClick(MapButtons.north));
-      northButton.setVisibility(View.VISIBLE); // Al-Haswa: always show compass button
-    }
+    // Al-Haswa: nav_north button removed — C++ compass on map handles north reset
 
     // Some buttons do not exist in navigation mode
     mToggleMapLayerButton = mFrame.findViewById(R.id.layers_button);
@@ -175,8 +169,7 @@ public class MapButtonsController extends Fragment
     mButtonsMap.put(MapButtons.bookmarks, bookmarksButton);
     mButtonsMap.put(MapButtons.search, searchButton);
 
-    if (northButton != null)
-      mButtonsMap.put(MapButtons.north, northButton);
+    // Al-Haswa: north button removed from UI
     if (mToggleMapLayerButton != null)
       mButtonsMap.put(MapButtons.toggleMapLayer, mToggleMapLayerButton);
     if (menuButton != null)
@@ -211,7 +204,7 @@ public class MapButtonsController extends Fragment
       if (mNavMyPosition != null)
         mNavMyPosition.showButton(show);
       break;
-    case north: UiUtils.showIf(show, buttonView); break;
+    case north: /* Al-Haswa: handled by C++ compass */ break;
     case search: mSearchWheel.show(show); break;
     case bookmarks:
     case menu: UiUtils.showIf(show, buttonView); break;
@@ -223,17 +216,12 @@ public class MapButtonsController extends Fragment
   }
 
   /**
-   * Shows or hides the north/compass button based on map rotation.
-   * @param angleDeg Current map rotation angle in degrees (0 = north).
+   * Al-Haswa: north button removed — C++ compass rotates and handles tap.
+   * This method is kept as a no-op stub for compatibility.
    */
   public void updateNorthButtonVisibility(double angleDeg)
   {
-    final View northBtn = mButtonsMap.get(MapButtons.north);
-    if (northBtn == null)
-      return;
-    // Al-Haswa Magellan: always visible, always rotates to show north direction
-    if (northBtn instanceof FloatingActionButton)
-      northBtn.setRotation((float) angleDeg);
+    // No-op: C++ compass handles rotation and visibility
   }
 
   void animateIconBlinking(boolean show, @NonNull FloatingActionButton button)
@@ -430,7 +418,7 @@ public class MapButtonsController extends Fragment
         case zoomIn:
         case zoomOut:
         case zoom: toleranceOffset = -140; break;
-        case north: toleranceOffset = -200; break;
+        case north: /* no UI button */ break;
         }
         showButton(getViewTopOffset(translation, button) >= toleranceOffset, entry.getKey());
       }

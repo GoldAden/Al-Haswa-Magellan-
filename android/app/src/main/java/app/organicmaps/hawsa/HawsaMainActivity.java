@@ -16,7 +16,7 @@ public class HawsaMainActivity extends AppCompatActivity
 {
   private static final double DEFAULT_LAT = 15.3694;
   private static final double DEFAULT_LON = 44.1910;
-  private static final int DEFAULT_ZOOM = 7;
+  private static final int DEFAULT_ZOOM = 4;  // ~2000 km view radius
 
   @Override
   protected void onCreate(Bundle savedInstanceState)

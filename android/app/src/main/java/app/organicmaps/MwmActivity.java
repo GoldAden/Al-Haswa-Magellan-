@@ -608,10 +608,10 @@ public class MwmActivity extends BaseMwmFragmentActivity
       // Drive nav-bar height from the AndroidX visibility signal — pre-R FLAG_FULLSCREEN
       // hides only the status bar, so inferring from app state misreports the nav bar.
       mNavBarHeight = windowInsets.isVisible(WindowInsetsCompat.Type.navigationBars()) ? systemBars.bottom : 0;
-      // For the first loading, set compass top margin to status bar size
-      // The top inset will be then be updated by the routing controller
+      // Al-Haswa: Compass now sits above zoom buttons on bottom-right
+      // Calculate offset from bottom: nav bar + my-position button + zoom buttons + compass
       if (mCurrentWindowInsets == null)
-        updateCompassOffset(trackRecorderOffset + systemBars.top, systemBars.right);
+        updateCompassOffsetBottom(systemBars.bottom, systemBars.right);
       refreshLightStatusBar();
       updateBottomWidgetsOffset(systemBars.left);
       mCurrentWindowInsets = windowInsets;
@@ -820,7 +820,7 @@ public class MwmActivity extends BaseMwmFragmentActivity
     {
     case zoomIn -> Map.zoomIn();
     case zoomOut -> Map.zoomOut();
-    case north -> Map.resetToNorth();
+    // Al-Haswa: nav_north button removed, C++ compass handles reset-to-north via tap
     case myPosition ->
     {
       Logger.i(LOCATION_TAG, "The location button pressed");
@@ -1238,6 +1238,37 @@ public class MwmActivity extends BaseMwmFragmentActivity
   void updateCompassOffset(int offsetY, int offsetX)
   {
     mMapController.updateCompassOffset(offsetX, offsetY);
+
+    final double north = MwmApplication.from(this).getSensorHelper().getSavedNorth();
+    if (!Double.isNaN(north))
+      Map.onCompassUpdated(north, true);
+  }
+
+  /**
+   * Al-Haswa: Position C++ compass above the zoom buttons (bottom-right of screen).
+   * offsetY = bottom system bar height.
+   * The compass will be placed above zoom + my-position buttons.
+   */
+  void updateCompassOffsetBottom(int offsetY, int offsetX)
+  {
+    // Total height from bottom: nav bar + padding + my-position + margin + zoom_in + margin + zoom_out + margin + compass
+    final int navPadding = dimen(this, R.dimen.nav_frame_padding);
+    final int mapButtonSize = dimen(this, R.dimen.map_button_size);
+    final int marginHalf = dimen(this, R.dimen.margin_half);
+    // my-position button
+    int totalOffset = offsetY + navPadding + mapButtonSize;
+    // gap between my-position and zoom
+    totalOffset += marginHalf;
+    // zoom_in button
+    totalOffset += mapButtonSize;
+    // gap between zoom_in and zoom_out
+    totalOffset += marginHalf;
+    // zoom_out button
+    totalOffset += mapButtonSize;
+    // gap between zoom_out and compass
+    totalOffset += marginHalf;
+    // This is the distance from the bottom of the screen to the center of the compass
+    mMapController.updateCompassOffset(offsetX < 0 ? -1 : offsetX, totalOffset);
 
     final double north = MwmApplication.from(this).getSensorHelper().getSavedNorth();
     if (!Double.isNaN(north))
@@ -1666,19 +1697,8 @@ public class MwmActivity extends BaseMwmFragmentActivity
       @Override
       public void run()
       {
-        if (Map.isEngineCreated())
-        {
-          double angleRad = Map.getViewportRotationAngle();
-          // Normalize angle to 0-360 degrees (same as C++ CompassHandle)
-          double angleDeg = Math.toDegrees(((angleRad % (2 * Math.PI)) + (2 * Math.PI)) % (2 * Math.PI));
-          // For negative values, add 360
-          if (angleDeg < 0)
-            angleDeg += 360.0;
-          MapButtonsController mbc =
-              (MapButtonsController) getSupportFragmentManager().findFragmentById(R.id.map_buttons);
-          if (mbc != null)
-            mbc.updateNorthButtonVisibility(angleDeg);
-        }
+        // Al-Haswa: north button removed, C++ compass rotates automatically
+        // No need to update any Android button rotation
         if (mViewportPollHandler != null)
           mViewportPollHandler.postDelayed(this, VIEWPORT_POLL_INTERVAL_MS);
       }
@@ -2092,8 +2112,11 @@ public class MwmActivity extends BaseMwmFragmentActivity
 
     if (mCurrentWindowInsets != null)
     {
-      final int offset = mCurrentWindowInsets.getInsets(WindowInsetsCompat.Type.systemBars()).top;
-      updateCompassOffset(offset + dimen(this, R.dimen.map_button_size));
+      final int offsetBottom = mCurrentWindowInsets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom;
+      final int offsetRight = mCurrentWindowInsets.getInsets(WindowInsetsCompat.Type.systemBars()).right;
+      // Al-Haswa: compass above zoom + track recording indicator
+      final int mapButtonSize = dimen(this, R.dimen.map_button_size);
+      updateCompassOffsetBottom(offsetBottom + mapButtonSize, offsetRight);
     }
     Toast.makeText(this, R.string.track_recording, Toast.LENGTH_SHORT).show();
     TrackRecordingService.startForegroundService(getApplicationContext());
@@ -2105,9 +2128,9 @@ public class MwmActivity extends BaseMwmFragmentActivity
   {
     if (mCurrentWindowInsets != null)
     {
-      final int offsetY = mCurrentWindowInsets.getInsets(WindowInsetsCompat.Type.systemBars()).top;
-      final int offsetX = mCurrentWindowInsets.getInsets(WindowInsetsCompat.Type.systemBars()).right;
-      updateCompassOffset(offsetY, offsetX);
+      final int offsetBottom = mCurrentWindowInsets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom;
+      final int offsetRight = mCurrentWindowInsets.getInsets(WindowInsetsCompat.Type.systemBars()).right;
+      updateCompassOffsetBottom(offsetBottom, offsetRight);
     }
     // Reset the state before stopping the service: its observer re-enters this method while the state is on.
     mMapButtonsViewModel.setTrackRecorderState(false);
