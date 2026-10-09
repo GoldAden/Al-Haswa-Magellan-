@@ -37,56 +37,44 @@ jobs:
       fail-fast: false
       matrix:
         cmake-build-type: [ Debug, Release ]
-        include:
-          # ── Ubuntu 24.04 x86_64 + clang 19 (stable, always available) ──
-          - environment:
-              os: ubuntu-24.04
-              cc: clang-19
-              cxx: clang++-19
-              unity: OFF
-              run-tests: OFF
-              cmake-preset-suffix: ""
-          # ── Ubuntu 24.04 ARM64 + gcc-13 (stable, always available) ──
-          - environment:
-              os: ubuntu-24.04-arm
-              cc: gcc-13
-              cxx: g++-13
-              unity: ON
-              run-tests: ON
-              cmake-preset-suffix: ""
-          # ── Ubuntu 26.04 x86_64 + gcc-15 (GA Sep 2026, may have capacity limits) ──
-          - environment:
-              os: ubuntu-26.04
-              cc: gcc-15
-              cxx: g++-15
-              unity: ON
-              run-tests: OFF
-              cmake-preset-suffix: ""
-          # ── Ubuntu 26.04 ARM64 + clang-22 (GA Sep 2026, may have capacity limits) ──
-          - environment:
-              os: ubuntu-26.04-arm
-              cc: clang-22
-              cxx: clang++-22
-              unity: ON
-              run-tests: OFF
-              cmake-preset-suffix: ""
-          # ── macOS 26 + Apple Clang (GA since Feb 2026) ──
-          - environment:
-              os: macos-26
-              cc: clang
-              cxx: clang++
-              developer-dir: /Applications/Xcode_26.5.app/Contents/Developer
-              unity: ON
-              run-tests: OFF
-              cmake-preset-suffix: ""
-          # ── Windows Server 2025 + VS 2026 (GA since May 2026) ──
-          - environment:
-              os: windows-2025-vs2026
-              cc: cl.exe
-              cxx: cl.exe
-              unity: ON
-              run-tests: OFF
-              cmake-preset-suffix: -windows
+        environment:
+          - os: ubuntu-24.04
+            cc: clang-19
+            cxx: clang++-19
+            unity: OFF
+            run-tests: OFF
+
+          - os: ubuntu-24.04-arm
+            cc: gcc-13
+            cxx: g++-13
+            unity: ON
+            run-tests: ON
+
+          - os: ubuntu-26.04
+            cc: gcc-15
+            cxx: g++-15
+            unity: ON
+            run-tests: OFF
+
+          - os: ubuntu-26.04-arm
+            cc: clang-22
+            cxx: clang++-22
+            unity: ON
+            run-tests: OFF
+
+          - os: macos-26
+            cc: clang
+            cxx: clang++
+            developer-dir: /Applications/Xcode_26.5.app/Contents/Developer
+            unity: ON
+            run-tests: OFF
+
+          - os: windows-2025-vs2026
+            cc: cl.exe
+            cxx: cl.exe
+            cmake-preset-suffix: -windows
+            unity: ON
+            run-tests: OFF
         exclude:
           - environment: { unity: OFF }
             cmake-build-type: Release
