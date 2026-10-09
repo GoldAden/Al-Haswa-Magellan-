@@ -1251,7 +1251,8 @@ public class MwmActivity extends BaseMwmFragmentActivity
    */
   void updateCompassOffsetBottom(int offsetY, int offsetX)
   {
-    // Total height from bottom: nav bar + padding + my-position + margin + zoom_in + margin + zoom_out + margin + compass
+    // Total height from bottom: nav bar + padding + my-position + margin + zoom_in + margin + zoom_out + margin +
+    // compass
     final int navPadding = dimen(this, R.dimen.nav_frame_padding);
     final int mapButtonSize = dimen(this, R.dimen.map_button_size);
     final int marginHalf = dimen(this, R.dimen.margin_half);
