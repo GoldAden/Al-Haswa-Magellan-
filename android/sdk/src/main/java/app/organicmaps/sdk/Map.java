@@ -90,8 +90,8 @@ public final class Map
    * Moves the map compass using the given offsets.
    *
    * @param context     Context.
-   * @param offsetX     Pixel offset from the top. -1 to keep the previous value.
-   * @param offsetY     Pixel offset from the right.  -1 to keep the previous value.
+   * @param offsetX     Pixel offset from the right. -1 to keep the previous value.
+   * @param offsetY     Pixel offset from the BOTTOM (Al-Haswa: compass is above zoom buttons). -1 to keep the previous value.
    * @param forceRedraw True to force the compass to redraw
    */
   public void updateCompassOffset(final Context context, int offsetX, int offsetY, boolean forceRedraw)
@@ -101,7 +101,10 @@ public final class Map
     final int navPadding = Utils.dimen(context, R.dimen.nav_frame_padding);
     final int marginX = Utils.dimen(context, R.dimen.margin_compass) + navPadding;
     final int marginY = Utils.dimen(context, R.dimen.margin_compass_top) + navPadding;
-    nativeSetupWidget(WIDGET_COMPASS, mWidth - x - marginX, y + marginY, ANCHOR_CENTER);
+    // Al-Haswa: Compass is now above zoom buttons (bottom-right).
+    // y is the distance from bottom of screen to compass center.
+    // nativeSetupWidget expects pixel coords: x from left, y from top.
+    nativeSetupWidget(WIDGET_COMPASS, mWidth - x - marginX, mHeight - y - marginY, ANCHOR_CENTER);
     if (forceRedraw && mSurfaceCreated)
       nativeApplyWidgets();
     mCurrentCompassOffsetX = x;

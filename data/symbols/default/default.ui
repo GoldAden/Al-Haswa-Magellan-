@@ -14,13 +14,13 @@
   <compass>
     <portrait>
       <anchor vertical="center" horizontal="center"/>
-      <relative vertical="top" horizontal="right"/>
-      <offset x="34" y="48"/>
+      <relative vertical="bottom" horizontal="right"/>
+      <offset x="20" y="116"/>
     </portrait>
     <landscape>
       <anchor vertical="center" horizontal="center"/>
-      <relative vertical="top" horizontal="right"/>
-      <offset x="34" y="48"/>
+      <relative vertical="bottom" horizontal="right"/>
+      <offset x="20" y="116"/>
     </landscape>
   </compass>
   <copyright>
