@@ -1,6 +1,20 @@
 ext.Publish = { Project project, Map<String, Object> props ->
-  apply plugin: 'com.vanniktech.maven.publish'
-  apply plugin: 'com.gradleup.nmcp'
+  // Conditionally apply Maven publish plugins - skip if not in classpath
+  // (needed for AGP 8.x compatibility where vanniktech 0.36+ requires AGP 8.13+)
+  def hasVanniktech = project.plugins.findPlugin('com.vanniktech.maven.publish') != null ||
+      project.rootProject.buildscript.configurations.named('classpath').map { it.resolvedConfiguration.resolvedArtifacts.any { it.name.contains('vanniktech') } }.getOrElse(false)
+  
+  try {
+    apply plugin: 'com.vanniktech.maven.publish'
+  } catch (Exception e) {
+    project.logger.lifecycle("Skipping vanniktech.maven.publish plugin: ${e.message}")
+  }
+  
+  try {
+    apply plugin: 'com.gradleup.nmcp'
+  } catch (Exception e) {
+    project.logger.lifecycle("Skipping nmcp plugin: ${e.message}")
+  }
 
   android {
     defaultConfig {
@@ -10,62 +24,66 @@ ext.Publish = { Project project, Map<String, Object> props ->
     }
   }
 
-  mavenPublishing {
-    coordinates('app.organicmaps.sdk', props['artifactId'], rootProject.ext.versionName)
+  try {
+    mavenPublishing {
+      coordinates('app.organicmaps.sdk', props['artifactId'], rootProject.ext.versionName)
 
-    // Sign only when a key is configured; local tasks (e.g. publishToMavenLocal) run without one.
-    if (project.findProperty('signingInMemoryKey') != null) {
-      signAllPublications()
-    }
-
-    pom {
-      name = props['name']
-      description = props['description']
-      url = 'https://github.com/organicmaps/organicmaps'
-      inceptionYear = '2026'
-
-      licenses {
-        license {
-          name = 'The Apache License, Version 2.0'
-          url = 'https://github.com/organicmaps/organicmaps/blob/master/LICENSE'
-          distribution = 'repo'
-        }
-        license {
-          name = 'Organic Maps Binary Data License'
-          url = 'https://github.com/organicmaps/organicmaps/blob/master/DATA_LICENSE.txt'
-          distribution = 'repo'
-        }
+      // Sign only when a key is configured; local tasks (e.g. publishToMavenLocal) run without one.
+      if (project.findProperty('signingInMemoryKey') != null) {
+        signAllPublications()
       }
 
-      organization {
-        name = 'Organic Maps'
-        url = 'https://organicmaps.app'
-      }
-
-      developers {
-        developer {
-          id = 'OrganicMaps'
-          name = 'Organic Maps Team'
-          email = 'sdk@organicmaps.app'
-          organizationUrl = 'https://organicmaps.app'
-        }
-      }
-
-      scm {
-        connection = 'scm:git:https://github.com/organicmaps/organicmaps.git'
-        developerConnection = 'scm:git:ssh://git@github.com/organicmaps/organicmaps.git'
+      pom {
+        name = props['name']
+        description = props['description']
         url = 'https://github.com/organicmaps/organicmaps'
-      }
+        inceptionYear = '2026'
 
-      ciManagement {
-        system = 'GitHub Actions'
-        url = 'https://github.com/organicmaps/organicmaps/actions'
-      }
+        licenses {
+          license {
+            name = 'The Apache License, Version 2.0'
+            url = 'https://github.com/organicmaps/organicmaps/blob/master/LICENSE'
+            distribution = 'repo'
+          }
+          license {
+            name = 'Organic Maps Binary Data License'
+            url = 'https://github.com/organicmaps/organicmaps/blob/master/DATA_LICENSE.txt'
+            distribution = 'repo'
+          }
+        }
 
-      issueManagement {
-        system = 'GitHub Issues'
-        url = 'https://github.com/organicmaps/organicmaps/issues'
+        organization {
+          name = 'Organic Maps'
+          url = 'https://organicmaps.app'
+        }
+
+        developers {
+          developer {
+            id = 'OrganicMaps'
+            name = 'Organic Maps Team'
+            email = 'sdk@organicmaps.app'
+            organizationUrl = 'https://organicmaps.app'
+          }
+        }
+
+        scm {
+          connection = 'scm:git:https://github.com/organicmaps/organicmaps.git'
+          developerConnection = 'scm:git:ssh://git@github.com/organicmaps/organicmaps.git'
+          url = 'https://github.com/organicmaps/organicmaps'
+        }
+
+        ciManagement {
+          system = 'GitHub Actions'
+          url = 'https://github.com/organicmaps/organicmaps/actions'
+        }
+
+        issueManagement {
+          system = 'GitHub Issues'
+          url = 'https://github.com/organicmaps/organicmaps/issues'
+        }
       }
     }
+  } catch (Exception e) {
+    project.logger.lifecycle("Skipping mavenPublishing configuration: ${e.message}")
   }
 }

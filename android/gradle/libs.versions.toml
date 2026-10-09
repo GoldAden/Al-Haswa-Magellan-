@@ -49,13 +49,13 @@ microg-gms-location = "0.3.14.250932"
 mockito-core = "5.23.0"
 mockito-inline = "5.2.0"
 
-nmcp = "1.4.4"
+nmcp = "0.0.9"
 
 okhttp = "5.3.2"
 
 # triplet-play-publisher = "4.0.0"  # Disabled
 
-vanniktech-maven-publish = "0.36.0"
+vanniktech-maven-publish = "0.30.0"
 
 [libraries]
 android-tools-desugaring = { module = "com.android.tools:desugar_jdk_libs", version.ref = "android-tools-desugaring" }
