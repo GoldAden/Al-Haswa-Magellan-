@@ -5,7 +5,9 @@ android {
   compileSdk = propCompileSdkVersion.toInteger()
   ndkVersion = propNdkVersion
 
-  enableKotlin = false
+  // enableKotlin moved to project.ext for AGP 8.x compatibility
+  // (AGP 8.x does not allow arbitrary properties on android extension)
+  project.ext.enableKotlin = false
 
   defaultConfig {
     minSdk = propMinSdkVersion.toInteger()
@@ -27,7 +29,7 @@ android {
 }
 
 afterEvaluate {
-  if (android.enableKotlin) {
+  if (project.ext.enableKotlin) {
     configurations {
       ktlint
       detekt

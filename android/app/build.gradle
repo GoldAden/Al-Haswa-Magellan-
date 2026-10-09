@@ -51,7 +51,8 @@ android {
   // and existing Java classes can be migrated incrementally. Other modules keep
   // it disabled by default (see groovy/common-config.gradle) and can opt in by
   // uncommenting the `enableKotlin = true` stub in their own build.gradle.
-  enableKotlin = true
+  // enableKotlin moved to ext for AGP 8.x compatibility
+  project.ext.enableKotlin = true
 
   buildFeatures {
     dataBinding = true
