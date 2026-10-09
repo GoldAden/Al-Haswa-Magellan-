@@ -7,8 +7,6 @@
 //   apply from: "${rootProject.rootDir}/groovy/common-config.gradle"
 //   project.ext.enableKotlin = true
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 android {
   compileSdk = propCompileSdkVersion.toInteger()
   ndkVersion = propNdkVersion
@@ -38,9 +36,10 @@ android {
 
 afterEvaluate {
   if (project.ext.enableKotlin) {
-    // Configure Kotlin JVM target (kotlin-android plugin must be applied in module build.gradle)
-    tasks.withType(KotlinCompile).configureEach {
-      kotlinOptions {
+    // Configure Kotlin JVM target via the android extension
+    // (kotlin-android plugin must be applied in module build.gradle BEFORE this script)
+    if (project.extensions.findByName('android')?.hasProperty('kotlinOptions')) {
+      project.android.kotlinOptions {
         jvmTarget = '17'
       }
     }
