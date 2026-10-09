@@ -36,9 +36,11 @@ android {
 
 afterEvaluate {
   if (project.ext.enableKotlin) {
-    // Configure Kotlin compilation options (plugin must be applied in module build.gradle)
-    kotlinOptions {
-      jvmTarget = '17'
+    // Configure Kotlin JVM target (kotlin-android plugin must be applied in module build.gradle)
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+      kotlinOptions {
+        jvmTarget = '17'
+      }
     }
 
     // Add Kotlin standard library dependency
