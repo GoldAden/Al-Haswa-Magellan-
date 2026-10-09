@@ -59,13 +59,12 @@ jobs:
       - name: Fetch submodules manually
         shell: bash
         run: |
-          set -e
           echo "Fetching submodules manually (GitHub fork did not preserve submodule refs)..."
           # Remove empty dirs left by checkout that should be submodules
           for d in 3party/BLAKE3 3party/CMake-MetalShaderSupport 3party/Vulkan-Headers 3party/boost_headers 3party/expat 3party/fast_float 3party/fast_obj 3party/gflags 3party/glaze 3party/glfw 3party/glm 3party/googletest 3party/minizip-ng 3party/utfcpp 3party/zlib-ng 3party/freetype/freetype 3party/harfbuzz/harfbuzz 3party/icu/icu 3party/imgui/imgui 3party/pugixml/pugixml tools/kothic tools/osmctools tools/python/twine; do
             rm -rf "$d" 2>/dev/null || true
           done
-          # 3party top-level submodules
+          # 3party top-level submodules (using correct default branches from upstream)
           git clone --depth 1 https://github.com/BLAKE3-team/BLAKE3 3party/BLAKE3
           git clone --depth 1 --branch main https://github.com/dpogue/CMake-MetalShaderSupport.git 3party/CMake-MetalShaderSupport
           git clone --depth 1 --branch main https://github.com/KhronosGroup/Vulkan-Headers.git 3party/Vulkan-Headers
@@ -73,7 +72,7 @@ jobs:
           git clone --depth 1 --branch R_2_8_2 https://github.com/libexpat/libexpat.git 3party/expat
           git clone --depth 1 --branch main https://github.com/fastfloat/fast_float.git 3party/fast_float
           git clone --depth 1 --branch master https://github.com/thisistherk/fast_obj 3party/fast_obj
-          git clone --depth 1 --branch master https://github.com/gflags/gflags 3party/gflags
+          git clone --depth 1 --branch main https://github.com/gflags/gflags 3party/gflags
           git clone --depth 1 --branch main https://github.com/stephenberry/glaze 3party/glaze
           git clone --depth 1 --branch master https://github.com/glfw/glfw.git 3party/glfw
           git clone --depth 1 --branch master https://github.com/g-truc/glm.git 3party/glm
@@ -91,7 +90,7 @@ jobs:
           git clone --depth 1 --branch master https://github.com/organicmaps/kothic.git tools/kothic
           git clone --depth 1 --branch master https://github.com/organicmaps/osmctools.git tools/osmctools
           git clone --depth 1 --branch organicmaps https://github.com/organicmaps/twine.git tools/python/twine
-          echo "All submodules fetched successfully." 
+          echo "All submodules fetched successfully."
 
       - name: Set up Android SDK
         shell: bash
