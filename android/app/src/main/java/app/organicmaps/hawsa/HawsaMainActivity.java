@@ -14,9 +14,9 @@ import app.organicmaps.R;
 
 public class HawsaMainActivity extends AppCompatActivity
 {
-  private static final double DEFAULT_LAT = 19.4431;
-  private static final double DEFAULT_LON = 40.5167;
-  private static final int DEFAULT_ZOOM = 6;
+  private static final double DEFAULT_LAT = 15.3694;
+  private static final double DEFAULT_LON = 44.1910;
+  private static final int DEFAULT_ZOOM = 7;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
