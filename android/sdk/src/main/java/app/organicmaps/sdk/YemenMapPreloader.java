@@ -18,6 +18,13 @@ import java.io.OutputStream;
  * Country maps are NOT read from APK assets (unlike World.mwm/WorldCoasts.mwm
  * which the C++ GetReader finds inside the APK zip). They must reside under
  * {writablePath}/{dataVersion}/ for the native core to find them.
+ *
+ * IMPORTANT: This class does NOT call Framework.nativeGetDataVersion() because
+ * that native method accesses g_framework->NativeFramework(), which is NULL
+ * until nativeInitFramework() runs. Calling it before nativeInitFramework()
+ * causes a fatal SIGSEGV (native crash) — not a catchable Java exception.
+ * The data version is therefore hardcoded from the bundled countries.json
+ * (which contains "v":260714) and must be updated when the map bundle is updated.
  */
 public final class YemenMapPreloader
 {
@@ -27,46 +34,25 @@ public final class YemenMapPreloader
   private static final String ASSET_NAME = "Yemen.mwm";
 
   /**
-   * Fallback data version string if the native call is unavailable.
+   * Map data version — MUST match the version embedded in the bundled
+   * countries.json ("v": field) and the Yemen.mwm file.
    * Format: yyMMdd — 260714 = July 14, 2026.
-   * Updated in sync with the bundled Yemen.mwm and the CDN at
-   * https://cdn.organicmaps.app/maps/{DATA_VERSION}/Yemen.mwm
+   * Updated in sync with the CDN at:
+   *   https://cdn.organicmaps.app/maps/{DATA_VERSION}/Yemen.mwm
+   *
+   * Do NOT call Framework.nativeGetDataVersion() here — g_framework is NULL
+   * before nativeInitFramework() and will crash the process (SIGSEGV).
    */
-  private static final String FALLBACK_DATA_VERSION = "260714";
+  private static final String DATA_VERSION = "260714";
 
   private YemenMapPreloader() {}
 
   /**
-   * Determines the current map data version from the native core.
-   * Falls back to a hardcoded constant if the native method returns 0
-   * (e.g. on a fresh install before countries.txt is parsed).
-   */
-  @NonNull
-  private static String getDataVersion()
-  {
-    try
-    {
-      long version = Framework.nativeGetDataVersion();
-      if (version > 0)
-      {
-        Logger.i(TAG, "Data version from native core: " + version);
-        return String.valueOf(version);
-      }
-    }
-    catch (Exception e)
-    {
-      Logger.w(TAG, "Could not get data version from native core, using fallback", e);
-    }
-    Logger.i(TAG, "Using fallback data version: " + FALLBACK_DATA_VERSION);
-    return FALLBACK_DATA_VERSION;
-  }
-
-  /**
-   * Copies Yemen.mwm from APK assets to {writablePath}/{dataVersion}/ if not already present.
+   * Copies Yemen.mwm from APK assets to {writablePath}/{DATA_VERSION}/ if not already present.
    *
-   * This MUST be called AFTER nativeInitPlatform() (so the native library can provide
-   * the data version) but BEFORE initNativeFramework() (so the framework discovers
-   * the map when it scans local files).
+   * This MUST be called AFTER nativeInitPlatform() (so the platform is ready)
+   * but BEFORE nativeInitFramework() (so the framework discovers the map
+   * when its Storage constructor scans local files via FindAllLocalMapsAndCleanup).
    *
    * @param context     application context (for AssetManager)
    * @param writablePath the writable data directory returned by StoragePathManager.findMapsStorage()
@@ -74,8 +60,7 @@ public final class YemenMapPreloader
    */
   public static boolean preloadYemenMap(@NonNull Context context, @NonNull String writablePath)
   {
-    final String dataVersion = getDataVersion();
-    final String targetDir = writablePath + File.separator + dataVersion;
+    final String targetDir = writablePath + File.separator + DATA_VERSION;
     final File targetFile = new File(targetDir, ASSET_NAME);
 
     // Skip if already present (subsequent launches)
