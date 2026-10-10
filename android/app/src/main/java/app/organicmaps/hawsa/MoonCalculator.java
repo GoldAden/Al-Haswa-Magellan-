@@ -14,8 +14,8 @@ import java.util.TimeZone;
 public class MoonCalculator
 {
   // Al-Haswa coordinates
-  private static final double LAT = 19.4431;
-  private static final double LON = 40.5167;
+  private static final double LAT = 12.7794;
+  private static final double LON = 45.0367;
   private static final double TIMEZONE_OFFSET = 3.0; // Asia/Riyadh = UTC+3
 
   // Known new moon: Jan 6 2000 18:14 UTC
